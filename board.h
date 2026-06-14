@@ -1,6 +1,7 @@
 #ifndef BOARD_H
 #define BOARD_H
 
+#include <iostream>
 #include "raylib.h"
 
 enum Piece { EMPTY = 0, P = 1, N = 2, B = 3, R = 4, Q = 5, K = 6 };
@@ -59,6 +60,10 @@ public:
     void DrawMoves();
     void CheckForGameOver();
     void DrawGameOver();
+
+    // Performance and Logic Testing
+    long long Perft(int depth);
+    void RunPerftTest(int depth);
 };
 
 #endif

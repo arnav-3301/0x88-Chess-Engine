@@ -1,10 +1,88 @@
 #include "board.h"
 #include <iostream>
+#include <algorithm>
 
 const int knightOffsets[8] = {-33, -31, -18, -14, 14, 18, 31, 33};
 const int rookOffsets[4]   = {-16, 16, -1, 1};
 const int bishopOffsets[4] = {-17, -15, 15, 17};
 const int queenOffsets[8]  = {-17, -16, -15, -1, 1, 15, 16, 17};
+
+
+long long ChessGame::Perft(int depth) {
+    if (depth == 0) return 1;
+
+    std::vector<Move> moves = GenerateLegalMoves(sideToMove);
+    long long nodes = 0;
+
+    for (const Move& m : moves) {
+        // 1. TAKE SNAPSHOT
+        int tempBoard[128];
+        std::copy(std::begin(board), std::end(board), std::begin(tempBoard));
+        int tempEP = enPassantSquare;
+        bool tempWK = castleWK;
+        bool tempWQ = castleWQ;
+        bool tempBK = castleBK;
+        bool tempBQ = castleBQ;
+        int tempSide = sideToMove;
+
+        // 2. MAKE MOVE
+        MakeMove(m);
+
+        // 3. RECURSE DOWN THE TREE
+        nodes += Perft(depth - 1);
+
+        // 4. RESTORE SNAPSHOT
+        std::copy(std::begin(tempBoard), std::end(tempBoard), std::begin(board));
+        enPassantSquare = tempEP;
+        castleWK = tempWK;
+        castleWQ = tempWQ;
+        castleBK = tempBK;
+        castleBQ = tempBQ;
+        sideToMove = tempSide;
+    }
+
+    return nodes;
+}
+
+void ChessGame::RunPerftTest(int depth) {
+    std::cout << "\n--- Starting Perft Test to Depth " << depth << " ---\n";
+    
+    std::vector<Move> moves = GenerateLegalMoves(sideToMove);
+    long long totalNodes = 0;
+
+    // This is called a "Divide" - it prints the node count for each individual starting move
+    for (const Move& m : moves) {
+        // Snapshot
+        int tempBoard[128];
+        std::copy(std::begin(board), std::end(board), std::begin(tempBoard));
+        int tempEP = enPassantSquare;
+        bool tempWK = castleWK;
+        bool tempWQ = castleWQ;
+        bool tempBK = castleBK;
+        bool tempBQ = castleBQ;
+        int tempSide = sideToMove;
+
+        MakeMove(m);
+        long long nodes = Perft(depth - 1);
+        totalNodes += nodes;
+
+        // Restore
+        std::copy(std::begin(tempBoard), std::end(tempBoard), std::begin(board));
+        enPassantSquare = tempEP;
+        castleWK = tempWK;
+        castleWQ = tempWQ;
+        castleBK = tempBK;
+        castleBQ = tempBQ;
+        sideToMove = tempSide;
+
+        // Print the move format: fromIndex toIndex : nodeCount
+        std::cout << "Move " << m.from << "-" << m.to << " : " << nodes << " nodes\n";
+    }
+
+    std::cout << "\nTotal Nodes Evaluated: " << totalNodes << "\n";
+    std::cout << "-----------------------------------\n";
+}
+
 
 std::vector<Move> ChessGame::GeneratePseudoLegalMoves(int colorToGenerate) {
     std::vector<Move> moveList;

@@ -91,36 +91,29 @@ bool ChessGame::isSquareAttacked(int square, int attackingColorSign) {
 }
 
 void ChessGame::InitStartingPosition() {
-    for (int i = 0; i < 128; i++) board[i] = EMPTY;
-
-    int startPos[64] = {
-        // -R, -N, -B, -Q, -K, -B, -N, -R,
-        // -P, -P, -P, -P, -P, -P, -P, -P,
-        //  0,  0,  0,  0,  0,  0,  0,  0,
-        //  0,  0,  0,  0,  0,  0,  0,  0,
-        //  0,  0,  0,  0,  0,  0,  0,  0,
-        //  0,  0,  0,  0,  0,  0,  0,  0,
-        //  P,  P,  P,  P,  P,  P,  P,  P,
-        //  R,  N,  B,  Q,  K,  B,  N,  R
-        // experimental
-         0,  0,  0,  0,  0,  0,  0,  0,
-         0,  0,  0,  0,  0,  0,  0,  0,
-         0,  0,  0,  0,  0,  0,  0,  0,
-        -K,  0,  0,  0,  0,  0,  0,  0,
-         0,  0,  0,  0,  0,  0,  0,  K,
-         0,  0,  0,  0,  0,  0,  0,  0,
-         0,  0,  0,  0,  0,  0,  0,  0,
-         0,  0,  Q,  0,  0,  0,  0,  0
-    };
-
-    for (int rank = 0; rank < 8; rank++) {
-        for (int file = 0; file < 8; file++) {
-            int boardIndex = (rank << 4) + file;
-            board[boardIndex] = startPos[(rank * 8) + file];
-        }
+    // 1. Wipe the board clean
+    for (int i = 0; i < 128; i++) {
+        board[i] = EMPTY;
     }
-}
 
+    // 2. Set up Black Pieces (Top of screen, indices 0-7 and 16-23)
+    board[0] = -R; board[1] = -N; board[2] = -B; board[3] = -Q;
+    board[4] = -K; board[5] = -B; board[6] = -N; board[7] = -R;
+    for (int i = 16; i < 24; i++) board[i] = -P;
+
+    // 3. Set up White Pieces (Bottom of screen, indices 112-119 and 96-103)
+    board[112] = R; board[113] = N; board[114] = B; board[115] = Q;
+    board[116] = K; board[117] = B; board[118] = N; board[119] = R;
+    for (int i = 96; i < 104; i++) board[i] = P;
+
+    // 4. Reset Game State
+    sideToMove = 1;
+    enPassantSquare = -1;
+    castleWK = true; 
+    castleWQ = true;
+    castleBK = true; 
+    castleBQ = true;
+}
 void ChessGame::LoadPieceTextures() {
     whiteTextures[P] = LoadTexture("resources/white-pawn.png");
     whiteTextures[N] = LoadTexture("resources/white-knight.png");
