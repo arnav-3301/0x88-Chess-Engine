@@ -5,19 +5,13 @@ const int SQUARE_SIZE = 80;
 const int BOARD_SIZE = 8 * SQUARE_SIZE;
 
 int main() {
-    // 1. ALWAYS initialize the window first so the GPU context exists
+    // ALWAYS initialize the window first so the GPU context exists
     InitWindow(640, 640, "0x88 Chess Engine");
     SetTargetFPS(60);
 
-    // 2. NOW it is safe to create the game (and load textures in the background)
     ChessGame game;
-
-    // 3. Run the Perft test
-    game.RunPerftTest(5);
-
-    // 4. Safely close and exit
-    CloseWindow();
-    return 0;
+    // Loading a test FEN
+    game.LoadFromFEN("6k1/5ppp/8/8/8/8/5PPP/4R1K1 w - - 0 1");
 
     while (!WindowShouldClose()) {
         game.Update();

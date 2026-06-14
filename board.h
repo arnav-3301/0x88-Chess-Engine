@@ -64,6 +64,9 @@ public:
     // Performance and Logic Testing
     long long Perft(int depth);
     void RunPerftTest(int depth);
+
+    // FEN Parser
+    void LoadFromFEN(const std::string& fen);
 };
 
 #endif

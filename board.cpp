@@ -1,11 +1,76 @@
 #include "board.h"
 #include <cmath>
+#include <sstream>
+#include <cctype>
 
 const int knightOffsets[8] = {-33, -31, -18, -14, 14, 18, 31, 33};
 const int rookOffsets[4]   = {-16, 16, -1, 1};
 const int bishopOffsets[4] = {-17, -15, 15, 17};
 const int queenOffsets[8]  = {-17, -16, -15, -1, 1, 15, 16, 17};
 
+void ChessGame::LoadFromFEN(const std::string& fen) {
+    // 1. Wipe the board clean
+    for (int i = 0; i < 128; i++) board[i] = EMPTY;
+
+    std::istringstream ss(fen);
+    std::string pieces, color, castling, enPassant;
+    
+    // We only need the first 4 parts for our engine's logic
+    ss >> pieces >> color >> castling >> enPassant; 
+
+    // 2. Parse Piece Placement
+    int file = 0;
+    int rank = 0; // Rank 0 is the top of your screen (Black's 8th rank)
+
+    for (char c : pieces) {
+        if (c == '/') {
+            rank++;
+            file = 0;
+        } else if (isdigit(c)) {
+            file += (c - '0'); // If it's a number (e.g., '3'), skip 3 empty squares
+        } else {
+            int square = (rank << 4) + file;
+            switch (c) {
+                case 'P': board[square] = P; break;
+                case 'N': board[square] = N; break;
+                case 'B': board[square] = B; break;
+                case 'R': board[square] = R; break;
+                case 'Q': board[square] = Q; break;
+                case 'K': board[square] = K; break;
+                case 'p': board[square] = -P; break;
+                case 'n': board[square] = -N; break;
+                case 'b': board[square] = -B; break;
+                case 'r': board[square] = -R; break;
+                case 'q': board[square] = -Q; break;
+                case 'k': board[square] = -K; break;
+            }
+            file++;
+        }
+    }
+
+    // 3. Parse Active Color
+    sideToMove = (color == "w") ? 1 : -1;
+
+    // 4. Parse Castling Rights
+    castleWK = false; castleWQ = false; castleBK = false; castleBQ = false;
+    for (char c : castling) {
+        if (c == 'K') castleWK = true;
+        if (c == 'Q') castleWQ = true;
+        if (c == 'k') castleBK = true;
+        if (c == 'q') castleBQ = true;
+    }
+
+    // 5. Parse En Passant Target Square
+    if (enPassant == "-") {
+        enPassantSquare = -1;
+    } else {
+        int fileIdx = enPassant[0] - 'a';
+        int rankChar = enPassant[1] - '0';
+        // Map standard chess rank (1-8) to our visual Raylib rank (7-0)
+        int rankIdx = 8 - rankChar; 
+        enPassantSquare = (rankIdx << 4) + fileIdx;
+    }
+}
 
 ChessGame::ChessGame() {
     InitStartingPosition();
