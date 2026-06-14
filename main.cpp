@@ -19,6 +19,7 @@ int main() {
         game.DrawMoves();
         game.DrawPieces();
         game.DrawPromotionMenu();
+        game.DrawGameOver();
 
         EndDrawing();
     }

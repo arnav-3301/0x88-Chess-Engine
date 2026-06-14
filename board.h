@@ -36,6 +36,8 @@ public:
     bool castleWQ;
     bool castleBK;
     bool castleBQ;
+    bool isCheckmate;
+    bool isStalemate;
 
     ChessGame();
     ~ChessGame();
@@ -55,6 +57,8 @@ public:
     void DrawPieces();
     void DrawPromotionMenu();
     void DrawMoves();
+    void CheckForGameOver();
+    void DrawGameOver();
 };
 
 #endif

@@ -19,6 +19,8 @@ ChessGame::ChessGame() {
     castleBQ = true;
 
     isPromoting = false;
+    isCheckmate = false;
+    isStalemate = false;
 }
 
 ChessGame::~ChessGame() {
@@ -92,23 +94,23 @@ void ChessGame::InitStartingPosition() {
     for (int i = 0; i < 128; i++) board[i] = EMPTY;
 
     int startPos[64] = {
-        -R, -N, -B, -Q, -K, -B, -N, -R,
-        -P, -P, -P, -P, -P, -P, -P, -P,
-         0,  0,  0,  0,  0,  0,  0,  0,
-         0,  0,  0,  0,  0,  0,  0,  0,
-         0,  0,  0,  0,  0,  0,  0,  0,
-         0,  0,  0,  0,  0,  0,  0,  0,
-         P,  P,  P,  P,  P,  P,  P,  P,
-         R,  N,  B,  Q,  K,  B,  N,  R
-        // experimental
+        // -R, -N, -B, -Q, -K, -B, -N, -R,
+        // -P, -P, -P, -P, -P, -P, -P, -P,
+        //  0,  0,  0,  0,  0,  0,  0,  0,
+        //  0,  0,  0,  0,  0,  0,  0,  0,
+        //  0,  0,  0,  0,  0,  0,  0,  0,
         //  0,  0,  0,  0,  0,  0,  0,  0,
         //  P,  P,  P,  P,  P,  P,  P,  P,
-        //  0,  0,  0,  0,  0,  0,  0,  0,
-        // -K,  0,  0,  0,  0,  0,  0,  0,
-        //  0,  0,  0,  0,  0,  0,  0,  K,
-        //  0,  0,  0,  0,  0,  0,  0,  0,
-        // -P, -P, -P, -P, -P, -P, -P, -P,
-        //  0,  0,  0,  0,  0,  0,  0,  0
+        //  R,  N,  B,  Q,  K,  B,  N,  R
+        // experimental
+         0,  0,  0,  0,  0,  0,  0,  0,
+         0,  0,  0,  0,  0,  0,  0,  0,
+         0,  0,  0,  0,  0,  0,  0,  0,
+        -K,  0,  0,  0,  0,  0,  0,  0,
+         0,  0,  0,  0,  0,  0,  0,  K,
+         0,  0,  0,  0,  0,  0,  0,  0,
+         0,  0,  0,  0,  0,  0,  0,  0,
+         0,  0,  Q,  0,  0,  0,  0,  0
     };
 
     for (int rank = 0; rank < 8; rank++) {
@@ -178,6 +180,7 @@ void ChessGame::DrawPieces() {
 
 void ChessGame::Update() {
     const int SQUARE_SIZE = 80;
+    if (isCheckmate || isStalemate) return;
 
     if(isPromoting) {
         if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
@@ -206,7 +209,9 @@ void ChessGame::Update() {
                         isPromoting = false;
                         selectedSquare = -1;
                         activeMoves.clear();
-                        return; 
+
+                        CheckForGameOver();
+                        return;
                     }
                 }
             }
@@ -241,6 +246,8 @@ void ChessGame::Update() {
                     MakeMove(m);
                     selectedSquare = -1;
                     moveExecuted = true;
+
+                    CheckForGameOver();
                     break;
                 }
             }
@@ -362,5 +369,55 @@ void ChessGame::DrawPromotionMenu() {
 
         float scale = (float)SQUARE_SIZE / texture.width;
         DrawTextureEx(texture, {(float)drawX, (float)drawY}, 0.0f, scale, WHITE);
+    }
+}
+
+void ChessGame::CheckForGameOver() {
+    std::vector<Move> currentMoves = GenerateLegalMoves(sideToMove);
+
+    if (!currentMoves.empty()) return;
+
+    int kingSquare = -1;
+    int kingPiece = (sideToMove == 1) ? K : -K;
+
+    for (int i = 0; i < 128; i++) {
+        if (isSquareOnBoard(i) && board[i] == kingPiece) {
+            kingSquare = i;
+            break;
+        }
+    }
+
+    if (isSquareAttacked(kingSquare, -sideToMove)) {
+        isCheckmate = true;
+    } else {
+        isStalemate = true;
+    }
+}
+
+void ChessGame::DrawGameOver() {
+    if (!isCheckmate && !isStalemate) return;
+
+    const int SQUARE_SIZE = 80;
+    int screenWidth = 8 * SQUARE_SIZE;
+    int screenHeight = 8 * SQUARE_SIZE;
+
+    // Dim the entire board
+    DrawRectangle(0, 0, screenWidth, screenHeight, Fade(BLACK, 0.7f));
+
+    if (isCheckmate) {
+        // If it is White's turn, and they have no moves/are in check, Black won.
+        const char* text = (sideToMove == 1) ? "BLACK WINS!" : "WHITE WINS!";
+        int textWidth = MeasureText(text, 60);
+        DrawText(text, (screenWidth - textWidth) / 2, screenHeight / 2 - 40, 60, RED);
+        
+        int subTextWidth = MeasureText("CHECKMATE", 30);
+        DrawText("CHECKMATE", (screenWidth - subTextWidth) / 2, screenHeight / 2 + 30, 30, WHITE);
+    } 
+    else if (isStalemate) {
+        int textWidth = MeasureText("STALEMATE", 60);
+        DrawText("STALEMATE", (screenWidth - textWidth) / 2, screenHeight / 2 - 40, 60, GRAY);
+        
+        int subTextWidth = MeasureText("DRAW", 30);
+        DrawText("DRAW", (screenWidth - subTextWidth) / 2, screenHeight / 2 + 30, 30, WHITE);
     }
 }
