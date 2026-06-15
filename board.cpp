@@ -1,5 +1,7 @@
 #include "board.h"
+#include <algorithm>
 #include <cmath>
+#include <raylib.h>
 #include <sstream>
 #include <cctype>
 
@@ -8,6 +10,105 @@ const int rookOffsets[4]   = {-16, 16, -1, 1};
 const int bishopOffsets[4] = {-17, -15, 15, 17};
 const int queenOffsets[8]  = {-17, -16, -15, -1, 1, 15, 16, 17};
 
+
+// Move to notation (UCI)
+std::string ChessGame::GetUCIMove(Move m) {
+    // Lambda helper to convert a single 0x88 index to a 2-character string
+    auto indexToAlgebraic = [](int index) {
+        int file = index & 7; // Get the column (0-7)
+        int rank = 8 - (index >> 4); // Map visual Raylib rank to chess rank (1-8)
+
+        char fileChar = 'a' + file;
+        return std::string(1, fileChar) + std::to_string(rank);
+    };
+
+    std::string moveStr = indexToAlgebraic(m.from) + indexToAlgebraic(m.to);
+
+    // Append promotion piece if applicable
+    if (m.promotionPiece != 0) {
+        switch(std::abs(m.promotionPiece)) {
+            case Q: moveStr += "q"; break;
+            case R: moveStr += "r"; break;
+            case B: moveStr += "b"; break;
+            case N: moveStr += "n"; break;
+        }
+    }
+
+    return moveStr;
+}
+
+// Game history methods
+void ChessGame::SaveStateTo(std::vector<GameState>& stack) {
+    GameState state;
+    std::copy(std::begin(board), std::end(board), std::begin(state.board));
+    state.sideToMove = sideToMove;
+    state.enPassantSquare = enPassantSquare;
+    state.castleWK = castleWK;
+    state.castleWQ = castleWQ;
+    state.castleBK = castleBK;
+    state.castleBQ = castleBQ;
+
+    stack.push_back(state);
+}
+void ChessGame::Undo() {
+    if (undoStack.empty()) return;
+
+    redoMoveHistory.push_back(moveHistory.back());
+    moveHistory.pop_back();
+
+    // 1. Save current state to the redo timeline
+    SaveStateTo(redoStack);
+
+    // 2. Fetch the previous state
+    GameState prevState = undoStack.back();
+    undoStack.pop_back();
+
+    // 3. Restore the board
+    std::copy(std::begin(prevState.board), std::end(prevState.board), std::begin(board));
+    sideToMove = prevState.sideToMove;
+    enPassantSquare = prevState.enPassantSquare;
+    castleWK = prevState.castleWK;
+    castleWQ = prevState.castleWQ;
+    castleBK = prevState.castleBK;
+    castleBQ = prevState.castleBQ;
+
+    // 4. Reset UI and locks
+    selectedSquare = -1;
+    activeMoves.clear();
+    isCheckmate = false;
+    isStalemate = false;
+    isPromoting = false;
+}
+
+void ChessGame::Redo() {
+    if (redoStack.empty()) return;
+
+    moveHistory.push_back(redoMoveHistory.back());
+    redoMoveHistory.pop_back();
+
+    // 1. Save current state back to the undo timeline
+    SaveStateTo(undoStack);
+
+    // 2. Fetch the next state
+    GameState nextState = redoStack.back();
+    redoStack.pop_back();
+
+    // 3. Restore the board
+    std::copy(std::begin(nextState.board), std::end(nextState.board), std::begin(board));
+    sideToMove = nextState.sideToMove;
+    enPassantSquare = nextState.enPassantSquare;
+    castleWK = nextState.castleWK;
+    castleWQ = nextState.castleWQ;
+    castleBK = nextState.castleBK;
+    castleBQ = nextState.castleBQ;
+
+    // 4. Reset UI and evaluate game over conditions for the restored turn
+    selectedSquare = -1;
+    activeMoves.clear();
+    CheckForGameOver(); 
+}
+
+// FEN Parser
 void ChessGame::LoadFromFEN(const std::string& fen) {
     // 1. Wipe the board clean
     for (int i = 0; i < 128; i++) board[i] = EMPTY;
@@ -75,6 +176,10 @@ void ChessGame::LoadFromFEN(const std::string& fen) {
 ChessGame::ChessGame() {
     InitStartingPosition();
     LoadPieceTextures();
+    uiFont = LoadFontEx("myFont.ttf", 60, 0, 250);
+
+    SetTextureFilter(uiFont.texture, TEXTURE_FILTER_BILINEAR);
+
     selectedSquare = -1;
     enPassantSquare = -1;
     sideToMove = 1;
@@ -90,6 +195,7 @@ ChessGame::ChessGame() {
 
 ChessGame::~ChessGame() {
     UnloadPieceTextures();
+    UnloadFont(uiFont);
 }
 
 bool ChessGame::isSquareOnBoard(int index) {
@@ -204,17 +310,25 @@ void ChessGame::UnloadPieceTextures() {
 
 void ChessGame::DrawBoard() {
     const int SQUARE_SIZE = 80;
+    const int BOARD_OFFSET_X = 40;
+    const int BOARD_OFFSET_Y = 30;
+
     for (int rank = 0; rank < 8; rank++) {
         for (int file = 0; file < 8; file++) {
             bool isLightSquare = (rank + file) % 2 == 0;
             Color squareColor = isLightSquare ? RAYWHITE : GRAY;
-            DrawRectangle(file * SQUARE_SIZE, rank * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE, squareColor);
+            int screenX = file * SQUARE_SIZE + BOARD_OFFSET_X;
+            int screenY = rank * SQUARE_SIZE + BOARD_OFFSET_Y;
+            DrawRectangle(screenX, screenY, SQUARE_SIZE, SQUARE_SIZE, squareColor);
         }
     }
 }
 
 void ChessGame::DrawPieces() {
     const int SQUARE_SIZE = 80;
+    const int BOARD_OFFSET_X = 40;
+    const int BOARD_OFFSET_Y = 30;
+
     for (int rank = 0; rank < 8; rank++) {
         for (int file = 0; file < 8; file++) {
             int index = (rank << 4) + file;
@@ -224,8 +338,8 @@ void ChessGame::DrawPieces() {
                 int pieceType = std::abs(piece);
                 Texture2D currentTexture = (piece > 0) ? whiteTextures[pieceType] : blackTextures[pieceType];
 
-                float posX = file * SQUARE_SIZE;
-                float posY = rank * SQUARE_SIZE;
+                float posX = file * SQUARE_SIZE + BOARD_OFFSET_X;
+                float posY = rank * SQUARE_SIZE + BOARD_OFFSET_Y;
 
                 Vector2 position = { posX, posY };
 
@@ -238,6 +352,12 @@ void ChessGame::DrawPieces() {
 
 void ChessGame::Update() {
     const int SQUARE_SIZE = 80;
+    const int BOARD_OFFSET_X = 40;
+    const int BOARD_OFFSET_Y = 30;
+
+
+    if (IsKeyPressed(KEY_LEFT)) Undo();
+    if (IsKeyPressed(KEY_RIGHT)) Redo();
     if (isCheckmate || isStalemate) return;
 
     if(isPromoting) {
@@ -245,8 +365,11 @@ void ChessGame::Update() {
             int mouseX = GetMouseX();
             int mouseY = GetMouseY();
 
-            int clickedFile = mouseX / SQUARE_SIZE;
-            int clickedRank = mouseY / SQUARE_SIZE;
+            int boardX = mouseX - BOARD_OFFSET_X;
+            int boardY = mouseY - BOARD_OFFSET_Y;
+
+            int clickedFile = boardX / SQUARE_SIZE;
+            int clickedRank = boardY / SQUARE_SIZE;
 
             int targetRank = pendingPromotionMove.to >> 4;
             int targetFile = pendingPromotionMove.to & 7;
@@ -261,6 +384,12 @@ void ChessGame::Update() {
 
                         int promoPieces[4] = {Q, R, B, N};
                         pendingPromotionMove.promotionPiece = promoPieces[i];
+
+                        SaveStateTo(undoStack);
+                        redoStack.clear();
+
+                        moveHistory.push_back(GetUCIMove(pendingPromotionMove));
+                        redoMoveHistory.clear();
 
                         MakeMove(pendingPromotionMove);
 
@@ -281,13 +410,19 @@ void ChessGame::Update() {
         int mouseX = GetMouseX();
         int mouseY = GetMouseY();
 
-        int file = mouseX / SQUARE_SIZE;
-        int rank = mouseY / SQUARE_SIZE;
-        int clickedIndex = (rank << 4) + file;
+        int boardX = mouseX - BOARD_OFFSET_X;
+        int boardY = mouseY - BOARD_OFFSET_Y;
 
+            int file = boardX / SQUARE_SIZE;
+            int rank = boardY / SQUARE_SIZE;
+            int clickedIndex = (rank << 4) + file;
+
+
+        if (mouseX >= SIDEBAR_X) {
+
+        }
         if (!isSquareOnBoard(clickedIndex)) return;
 
-        // If a square is already selected, check if the click is on a legal move target
         if (selectedSquare != -1) {
             bool moveExecuted = false;
 
@@ -301,8 +436,15 @@ void ChessGame::Update() {
                         break;
                     }
 
+                    SaveStateTo(undoStack);
+                    redoStack.clear();
+
+                    moveHistory.push_back(GetUCIMove(m));
+                    redoMoveHistory.clear();
+
                     MakeMove(m);
                     selectedSquare = -1;
+                    activeMoves.clear();
                     moveExecuted = true;
 
                     CheckForGameOver();
@@ -384,14 +526,16 @@ void ChessGame::DrawMoves() {
     if (selectedSquare == -1) return;
 
     const int SQUARE_SIZE = 80;
+    const int BOARD_OFFSET_X = 40;
+    const int BOARD_OFFSET_Y = 30;
 
     for (const Move& m : activeMoves) {
         if (m.from == selectedSquare) {
             int targetRank = m.to >> 4;
             int targetFile = m.to & 7;
 
-            int centerX = (targetFile * SQUARE_SIZE) + (SQUARE_SIZE / 2);
-            int centerY = (targetRank * SQUARE_SIZE) + (SQUARE_SIZE / 2);
+            int centerX = (targetFile * SQUARE_SIZE + BOARD_OFFSET_X) + (SQUARE_SIZE / 2);
+            int centerY = (targetRank * SQUARE_SIZE + BOARD_OFFSET_Y) + (SQUARE_SIZE / 2);
 
             DrawCircle(centerX, centerY, 15, Fade(DARKGREEN, 0.7f));
         }
@@ -403,8 +547,10 @@ void ChessGame::DrawPromotionMenu() {
     if (!isPromoting) return;
 
     const int SQUARE_SIZE = 80;
+    const int BOARD_OFFSET_X = 40;
+    const int BOARD_OFFSET_Y = 30;
 
-    DrawRectangle(0, 0, 8 * SQUARE_SIZE, 8 * SQUARE_SIZE, Fade(BLACK, 0.5f));
+    DrawRectangle(BOARD_OFFSET_X, BOARD_OFFSET_Y, 8 * SQUARE_SIZE, 8 * SQUARE_SIZE, Fade(BLACK, 0.5f));
 
     int targetRank = pendingPromotionMove.to >> 4;
     int targetFile = pendingPromotionMove.to & 7;
@@ -416,8 +562,8 @@ void ChessGame::DrawPromotionMenu() {
 
     for (int i = 0; i < 4; i++) {
         int menuRank = targetRank + (i * direction);
-        int drawX = targetFile * SQUARE_SIZE;
-        int drawY = menuRank * SQUARE_SIZE;
+        int drawX = targetFile * SQUARE_SIZE + BOARD_OFFSET_X;
+        int drawY = menuRank * SQUARE_SIZE + BOARD_OFFSET_Y;
 
         DrawRectangle(drawX, drawY, SQUARE_SIZE, SQUARE_SIZE, RAYWHITE);
         DrawRectangleLines(drawX, drawY, SQUARE_SIZE, SQUARE_SIZE, BLACK);
@@ -455,27 +601,113 @@ void ChessGame::CheckForGameOver() {
 void ChessGame::DrawGameOver() {
     if (!isCheckmate && !isStalemate) return;
 
-    const int SQUARE_SIZE = 80;
-    int screenWidth = 8 * SQUARE_SIZE;
-    int screenHeight = 8 * SQUARE_SIZE;
+    const float SQUARE_SIZE = 80.0f;
+    const float BOARD_OFFSET_X = 40.0f;
+    const float BOARD_OFFSET_Y = 30.0f;
+
+    float screenWidth = 8 * SQUARE_SIZE;
+    float screenHeight = 8 * SQUARE_SIZE;
 
     // Dim the entire board
-    DrawRectangle(0, 0, screenWidth, screenHeight, Fade(BLACK, 0.7f));
+    DrawRectangle(BOARD_OFFSET_X, BOARD_OFFSET_Y, screenWidth, screenHeight, Fade(BLACK, 0.7f));
 
     if (isCheckmate) {
-        // If it is White's turn, and they have no moves/are in check, Black won.
         const char* text = (sideToMove == 1) ? "BLACK WINS!" : "WHITE WINS!";
-        int textWidth = MeasureText(text, 60);
-        DrawText(text, (screenWidth - textWidth) / 2, screenHeight / 2 - 40, 60, RED);
-        
-        int subTextWidth = MeasureText("CHECKMATE", 30);
-        DrawText("CHECKMATE", (screenWidth - subTextWidth) / 2, screenHeight / 2 + 30, 30, WHITE);
+
+        // --- NEW: Measure custom font width using MeasureTextEx().x ---
+        Vector2 textSize = MeasureTextEx(uiFont, text, 60.0f, 1.0f);
+        Vector2 headerPos = { 
+            (float)((screenWidth - textSize.x) / 2 + BOARD_OFFSET_X), 
+            (float)(screenHeight / 2 - 40.0f + BOARD_OFFSET_Y)
+        };
+        DrawTextEx(uiFont, text, headerPos, 60.0f, 1.0f, RED);
+
+        Vector2 subTextSize = MeasureTextEx(uiFont, "CHECKMATE", 30.0f, 1.0f);
+        Vector2 subHeaderPos = {
+            (float)((screenWidth - subTextSize.x) / 2 + BOARD_OFFSET_X), 
+            (float)(screenHeight / 2 + 30.0f + BOARD_OFFSET_Y)
+        };
+        DrawTextEx(uiFont, "CHECKMATE", subHeaderPos, 30.0f, 1.0f, WHITE);
     } 
     else if (isStalemate) {
-        int textWidth = MeasureText("STALEMATE", 60);
-        DrawText("STALEMATE", (screenWidth - textWidth) / 2, screenHeight / 2 - 40, 60, GRAY);
-        
-        int subTextWidth = MeasureText("DRAW", 30);
-        DrawText("DRAW", (screenWidth - subTextWidth) / 2, screenHeight / 2 + 30, 30, WHITE);
+        Vector2 textSize = MeasureTextEx(uiFont, "STALEMATE", 60.0f, 1.0f);
+        Vector2 headerPos = { 
+            (float)((screenWidth - textSize.x) / 2 + BOARD_OFFSET_X), 
+            (float)(screenHeight / 2 - 40.0f + BOARD_OFFSET_Y)
+        };
+        DrawTextEx(uiFont, "STALEMATE", headerPos, 60.0f, 1.0f, GRAY);
+
+        Vector2 subTextSize = MeasureTextEx(uiFont, "DRAW", 30.0f, 1.0f);
+        Vector2 subHeaderPos = {
+            (float)((screenWidth - subTextSize.x) / 2 + BOARD_OFFSET_X), 
+            (float)(screenHeight / 2 + 30.0f + BOARD_OFFSET_Y)
+        };
+        DrawTextEx(uiFont, "DRAW", subHeaderPos, 30.0f, 1.0f, WHITE);
+    }
+}
+// UI methods
+
+void ChessGame::DrawCoordinates() {
+    Color textColor = LIGHTGRAY;
+    float fontSize = 20.0f;
+
+    for (int i = 0; i < 8; i++) {
+        int rankY = (i * SQUARE_SIZE) + (float)BOARD_OFFSET_Y + ((float)SQUARE_SIZE / 2) - (fontSize / 2);
+        const char* rankText = TextFormat("%d", 8 - i);
+
+        // Draw it 25 pixels to the left of the board edge
+        Vector2 rankPos = {(float)(BOARD_OFFSET_X - 25), (float)(rankY)};
+        DrawTextEx(uiFont, rankText, rankPos, fontSize, 1.0f, textColor);
+
+        // --- Draw Files (a to h) on the bottom ---
+        // Center the text horizontally relative to each square
+        int fileX = (i * SQUARE_SIZE) + (float)BOARD_OFFSET_X + ((float)SQUARE_SIZE / 2) - (fontSize / 4);
+        char fileChar = 'a' + i;
+        const char* fileText = TextFormat("%c", fileChar);
+
+        // Draw it 10 pixels below the bottom board edge
+        Vector2 filePos = {(float)(fileX), (float)(BOARD_OFFSET_Y + (8 * SQUARE_SIZE))};
+        DrawTextEx(uiFont, fileText, filePos, fontSize, 1.0f, textColor);
+    }
+}
+
+void ChessGame::DrawSidebar() {
+    int sidebarWidth = 1000 - SIDEBAR_X;
+    DrawRectangle(SIDEBAR_X, 0, sidebarWidth, 700, GetColor(0x242424FF)); 
+    DrawLine(SIDEBAR_X, 0, SIDEBAR_X, 700, DARKGRAY);
+
+    Vector2 headerPos = { (float)(SIDEBAR_X + 20), 30.0f };
+    DrawTextEx(uiFont, "ENGINE CONTROL", headerPos, 30.0f, 1.0f, LIGHTGRAY); // Changed to 1.0f
+    DrawLine(SIDEBAR_X + 20, 60, SIDEBAR_X + sidebarWidth - 20, 60, DARKGRAY);
+
+    Vector2 subHeaderPos = {(float)(SIDEBAR_X + 20), 90.0f };
+    DrawTextEx(uiFont, "MOVE HISTORY", subHeaderPos, 30.0f, 1.0f, LIGHTGRAY); // Changed to 1.0f
+    DrawLine(SIDEBAR_X + 20, 120, SIDEBAR_X + sidebarWidth - 20, 120, DARKGRAY);
+
+    int startY = 140;
+    int currentX = SIDEBAR_X + 20;
+    int currentY = startY;
+
+    for (size_t i = 0; i < moveHistory.size(); i++) {
+        // If 'i' is even, it's White's move. If odd, it's Black's move.
+        if (i % 2 == 0) {
+            // Draw Turn Number (1., 2., 3.)
+            Vector2 numPos = {(float)(currentX), (float)(currentY)};
+            DrawTextEx(uiFont, TextFormat("%d.", (i/2) + 1), numPos, 20.0f, 0.0f, GRAY);
+
+            // Draw White's Move
+            Vector2 wMovePos = {(float)(currentX + 40), (float)(currentY)};
+            DrawTextEx(uiFont, moveHistory[i].c_str(), wMovePos, 20.0f, 1.0f, WHITE);
+        } else {
+            // Draw Black's Move
+            Vector2 bMovePos = {(float)(currentX + 130), (float)(currentY)};
+            DrawTextEx(uiFont, moveHistory[i].c_str(), bMovePos, 20.0f, 1.0f, LIGHTGRAY);
+
+            // Move down to the next line for the next turn
+            currentY += 30; 
+        }
+
+        // Failsafe: Prevent the text from drawing off the bottom of the screen
+        if (currentY > 660) break; 
     }
 }

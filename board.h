@@ -8,6 +8,13 @@ enum Piece { EMPTY = 0, P = 1, N = 2, B = 3, R = 4, Q = 5, K = 6 };
 
 #include <vector>
 
+struct GameState {
+    int board[128];
+    int sideToMove;
+    int enPassantSquare;
+    bool castleWK, castleWQ, castleBK, castleBQ;
+};
+
 struct Move {
     int from;
     int to;
@@ -20,13 +27,20 @@ struct Move {
 class ChessGame {
 public:
     int board[128];
+    const int SQUARE_SIZE = 80;
+    const int BOARD_OFFSET_X = 40;
+    const int BOARD_OFFSET_Y = 30;
+    const int SIDEBAR_X = 700;
+
+    Font uiFont;
+
     Texture2D whiteTextures[7];
     Texture2D blackTextures[7];
 
     int selectedSquare;
     int enPassantSquare;
     int sideToMove; // 1 - White, -1 - Black
-    
+
     bool isPromoting;
     Move pendingPromotionMove;
 
@@ -40,8 +54,23 @@ public:
     bool isCheckmate;
     bool isStalemate;
 
+    // Game history trackers
+    std::vector<GameState> undoStack;
+    std::vector<GameState> redoStack;
+
+    std::vector<std::string> moveHistory;
+    std::vector<std::string> redoMoveHistory;
+
+    std::string GetUCIMove(Move m);
+
     ChessGame();
     ~ChessGame();
+
+    void SaveStateTo(std::vector<GameState>& stack);
+    void Undo();
+    void Redo();
+
+    // In game methods
 
     void InitStartingPosition();
     bool isSquareOnBoard(int index);
@@ -58,6 +87,8 @@ public:
     void DrawPieces();
     void DrawPromotionMenu();
     void DrawMoves();
+
+    // Post game methods
     void CheckForGameOver();
     void DrawGameOver();
 
@@ -65,8 +96,16 @@ public:
     long long Perft(int depth);
     void RunPerftTest(int depth);
 
+    // AI: Minimax
+    int Minimax(int depth, bool isMaximizingPlayer);
+    Move FindBestMove(int depth);
+
     // FEN Parser
     void LoadFromFEN(const std::string& fen);
+
+    // UI handling
+    void DrawSidebar();
+    void DrawCoordinates();
 };
 
 #endif

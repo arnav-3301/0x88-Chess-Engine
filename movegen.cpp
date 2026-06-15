@@ -46,7 +46,7 @@ long long ChessGame::Perft(int depth) {
 
 void ChessGame::RunPerftTest(int depth) {
     std::cout << "\n--- Starting Perft Test to Depth " << depth << " ---\n";
-    
+
     std::vector<Move> moves = GenerateLegalMoves(sideToMove);
     long long totalNodes = 0;
 
