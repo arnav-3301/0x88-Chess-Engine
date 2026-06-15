@@ -9,7 +9,7 @@ int main() {
     InitWindow(1000, 700, "0x88 Chess Engine - Pro UI");
     SetTargetFPS(60);
 
-    ChessGame game;
+    ChessGame game(false);
     // Loading a test FEN
     // game.LoadFromFEN("6k1/5ppp/8/8/8/8/5PPP/4R1K1 w - - 0 1");
 

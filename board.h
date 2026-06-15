@@ -63,7 +63,7 @@ public:
 
     std::string GetUCIMove(Move m);
 
-    ChessGame();
+    ChessGame(bool headless = false);
     ~ChessGame();
 
     void SaveStateTo(std::vector<GameState>& stack);
@@ -97,8 +97,19 @@ public:
     void RunPerftTest(int depth);
 
     // AI: Minimax
-    int Minimax(int depth, bool isMaximizingPlayer);
+    // Variables
+    int botSearchDepth;
+    bool isAutoPlay;
+    bool isHeadlessMode;
+    int Evaluate();
+    int Minimax(int depth, int alpha, int beta, bool isMaximizingPlayer);
     Move FindBestMove(int depth);
+    int FindKingWhite();
+    int FindKingBlack();
+    void SaveStateToBackup(GameState& backup);
+    void RestoreStateFromBackup(const GameState& backup);
+    void AutoPlayUpdate();
+    bool IsRepetition();
 
     // FEN Parser
     void LoadFromFEN(const std::string& fen);
@@ -107,5 +118,7 @@ public:
     void DrawSidebar();
     void DrawCoordinates();
 };
+
+
 
 #endif
