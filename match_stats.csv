@@ -1,1001 +1,1001 @@
 Game,Winner,Reason,TotalMoves
-1,Draw,Max Moves,200
-2,Draw,Max Moves,200
-3,Draw,Max Moves,200
-4,Draw,Max Moves,200
-5,Draw,Max Moves,200
-6,Draw,Max Moves,200
-7,Draw,Max Moves,200
+1,Bot2_Black,Checkmate,156
+2,Bot1_Black,Checkmate,114
+3,Bot2_Black,Checkmate,68
+4,Bot2_White,Checkmate,129
+5,Bot2_Black,Checkmate,68
+6,Bot1_Black,Checkmate,76
+7,Bot2_Black,Checkmate,62
 8,Draw,Max Moves,200
-9,Draw,Repetition,83
-10,Draw,Max Moves,200
-11,Draw,Max Moves,200
-12,Draw,Stalemate,136
-13,Draw,Max Moves,200
-14,Draw,Max Moves,200
-15,Draw,Max Moves,200
-16,Draw,Max Moves,200
+9,Bot2_Black,Checkmate,66
+10,Bot2_White,Checkmate,101
+11,Bot2_Black,Checkmate,108
+12,Bot1_Black,Checkmate,110
+13,Bot2_Black,Checkmate,102
+14,Bot1_Black,Checkmate,122
+15,Bot1_White,Checkmate,123
+16,Bot2_White,Checkmate,121
 17,Draw,Max Moves,200
-18,Draw,Max Moves,200
+18,Bot2_White,Checkmate,131
 19,Draw,Max Moves,200
-20,Draw,Max Moves,200
-21,Draw,Max Moves,200
-22,Draw,Max Moves,200
-23,Draw,Max Moves,200
-24,Bot1_Black,Checkmate,78
-25,Draw,Repetition,97
-26,Draw,Max Moves,200
-27,Draw,Max Moves,200
-28,Draw,Max Moves,200
-29,Draw,Max Moves,200
-30,Draw,Repetition,142
-31,Draw,Max Moves,200
-32,Draw,Max Moves,200
-33,Draw,Max Moves,200
-34,Draw,Max Moves,200
-35,Draw,Max Moves,200
-36,Draw,Max Moves,200
-37,Draw,Max Moves,200
-38,Draw,Max Moves,200
-39,Draw,Max Moves,200
-40,Draw,Max Moves,200
-41,Draw,Max Moves,200
+20,Bot2_White,Checkmate,107
+21,Bot2_Black,Checkmate,136
+22,Bot2_White,Checkmate,135
+23,Bot1_White,Checkmate,117
+24,Bot1_Black,Checkmate,136
+25,Bot2_Black,Checkmate,92
+26,Bot2_White,Checkmate,45
+27,Bot1_White,Checkmate,121
+28,Bot2_White,Checkmate,85
+29,Bot2_Black,Checkmate,98
+30,Bot2_White,Checkmate,101
+31,Bot1_White,Checkmate,71
+32,Bot1_Black,Checkmate,42
+33,Bot1_White,Checkmate,73
+34,Bot1_Black,Checkmate,82
+35,Bot2_Black,Checkmate,84
+36,Bot1_Black,Checkmate,74
+37,Bot2_Black,Checkmate,70
+38,Bot1_Black,Checkmate,112
+39,Bot2_Black,Checkmate,196
+40,Bot2_White,Checkmate,163
+41,Bot2_Black,Checkmate,70
 42,Draw,Max Moves,200
 43,Draw,Max Moves,200
-44,Draw,Max Moves,200
-45,Draw,Max Moves,200
-46,Draw,Max Moves,200
-47,Draw,Max Moves,200
-48,Bot2_White,Checkmate,79
+44,Bot1_Black,Checkmate,150
+45,Bot2_Black,Checkmate,134
+46,Bot1_Black,Checkmate,88
+47,Bot2_Black,Checkmate,152
+48,Bot1_Black,Checkmate,166
 49,Draw,Max Moves,200
-50,Draw,Max Moves,200
-51,Draw,Max Moves,200
-52,Draw,Repetition,107
-53,Draw,Max Moves,200
-54,Draw,Max Moves,200
-55,Draw,Max Moves,200
-56,Draw,Max Moves,200
-57,Draw,Max Moves,200
-58,Draw,Max Moves,200
-59,Draw,Max Moves,200
-60,Draw,Max Moves,200
-61,Draw,Max Moves,200
-62,Draw,Max Moves,200
-63,Draw,Max Moves,200
-64,Draw,Max Moves,200
-65,Draw,Repetition,110
-66,Draw,Max Moves,200
-67,Draw,Max Moves,200
-68,Draw,Max Moves,200
-69,Draw,Repetition,157
-70,Draw,Max Moves,200
-71,Draw,Max Moves,200
+50,Bot2_White,Checkmate,137
+51,Bot2_Black,Checkmate,86
+52,Bot1_Black,Checkmate,70
+53,Bot2_Black,Checkmate,62
+54,Bot1_Black,Checkmate,78
+55,Bot2_Black,Checkmate,120
+56,Bot1_Black,Checkmate,116
+57,Bot2_Black,Checkmate,98
+58,Bot1_Black,Checkmate,88
+59,Bot2_Black,Checkmate,146
+60,Bot1_Black,Checkmate,90
+61,Bot2_Black,Checkmate,74
+62,Bot2_White,Checkmate,103
+63,Bot1_White,Checkmate,159
+64,Bot2_White,Checkmate,65
+65,Bot1_White,Checkmate,95
+66,Bot1_Black,Checkmate,80
+67,Bot1_White,Checkmate,91
+68,Bot2_White,Checkmate,107
+69,Draw,Repetition,75
+70,Bot1_Black,Checkmate,72
+71,Bot2_Black,Checkmate,92
 72,Draw,Max Moves,200
 73,Draw,Max Moves,200
-74,Draw,Max Moves,200
-75,Draw,Max Moves,200
+74,Draw,Repetition,161
+75,Bot2_Black,Checkmate,68
 76,Draw,Max Moves,200
-77,Draw,Max Moves,200
+77,Bot2_Black,Checkmate,118
 78,Draw,Max Moves,200
-79,Draw,Max Moves,200
-80,Draw,Max Moves,200
-81,Draw,Max Moves,200
-82,Draw,Max Moves,200
-83,Draw,Max Moves,200
+79,Bot2_Black,Checkmate,78
+80,Bot1_Black,Checkmate,90
+81,Bot2_Black,Checkmate,120
+82,Bot1_Black,Checkmate,144
+83,Bot1_White,Checkmate,109
 84,Draw,Max Moves,200
-85,Draw,Max Moves,200
-86,Draw,Max Moves,200
-87,Draw,Max Moves,200
-88,Draw,Max Moves,200
-89,Draw,Max Moves,200
-90,Draw,Max Moves,200
+85,Bot2_Black,Checkmate,96
+86,Bot2_White,Checkmate,139
+87,Bot2_Black,Checkmate,92
+88,Bot1_Black,Checkmate,104
+89,Bot2_Black,Checkmate,76
+90,Bot1_Black,Checkmate,112
 91,Draw,Max Moves,200
-92,Draw,Max Moves,200
-93,Draw,Repetition,113
-94,Draw,Max Moves,200
-95,Draw,Max Moves,200
-96,Draw,Max Moves,200
-97,Draw,Max Moves,200
-98,Draw,Max Moves,200
-99,Draw,Max Moves,200
-100,Draw,Max Moves,200
-101,Draw,Max Moves,200
-102,Draw,Max Moves,200
-103,Draw,Max Moves,200
-104,Draw,Repetition,194
-105,Draw,Max Moves,200
-106,Draw,Max Moves,200
-107,Draw,Max Moves,200
-108,Draw,Repetition,76
-109,Draw,Max Moves,200
-110,Draw,Max Moves,200
-111,Draw,Max Moves,200
-112,Draw,Max Moves,200
+92,Bot2_White,Checkmate,161
+93,Bot2_Black,Checkmate,138
+94,Bot1_Black,Checkmate,106
+95,Bot2_Black,Checkmate,94
+96,Bot1_Black,Checkmate,116
+97,Bot2_Black,Checkmate,194
+98,Bot2_White,Checkmate,45
+99,Bot1_White,Checkmate,81
+100,Bot2_White,Checkmate,167
+101,Bot1_White,Checkmate,45
+102,Bot1_Black,Checkmate,80
+103,Bot1_White,Checkmate,115
+104,Bot1_Black,Checkmate,116
+105,Bot1_White,Checkmate,91
+106,Bot1_Black,Checkmate,140
+107,Bot2_Black,Checkmate,110
+108,Bot1_Black,Checkmate,80
+109,Draw,Stalemate,103
+110,Bot1_Black,Checkmate,60
+111,Bot2_Black,Checkmate,72
+112,Bot1_Black,Checkmate,164
 113,Draw,Max Moves,200
-114,Draw,Max Moves,200
+114,Bot1_Black,Checkmate,54
 115,Draw,Max Moves,200
 116,Draw,Max Moves,200
-117,Draw,Max Moves,200
+117,Bot2_Black,Checkmate,80
 118,Draw,Max Moves,200
-119,Draw,Max Moves,200
-120,Draw,Max Moves,200
-121,Draw,Max Moves,200
-122,Draw,Repetition,132
+119,Bot1_White,Checkmate,159
+120,Bot1_Black,Checkmate,160
+121,Bot2_Black,Checkmate,44
+122,Bot2_White,Checkmate,103
 123,Draw,Max Moves,200
-124,Draw,Max Moves,200
+124,Bot1_Black,Checkmate,112
 125,Draw,Max Moves,200
-126,Draw,Max Moves,200
-127,Draw,Max Moves,200
-128,Draw,Max Moves,200
-129,Draw,Max Moves,200
-130,Draw,Max Moves,200
-131,Draw,Max Moves,200
+126,Bot1_Black,Checkmate,82
+127,Bot2_Black,Checkmate,118
+128,Draw,Repetition,104
+129,Bot2_Black,Checkmate,96
+130,Bot1_Black,Checkmate,140
+131,Bot1_White,Checkmate,137
 132,Draw,Max Moves,200
-133,Draw,Max Moves,200
+133,Bot2_Black,Checkmate,92
 134,Draw,Max Moves,200
-135,Draw,Max Moves,200
-136,Draw,Max Moves,200
-137,Draw,Max Moves,200
-138,Draw,Max Moves,200
+135,Bot2_Black,Checkmate,88
+136,Bot1_Black,Checkmate,162
+137,Bot1_White,Checkmate,149
+138,Draw,Stalemate,99
 139,Draw,Max Moves,200
-140,Draw,Max Moves,200
+140,Bot2_White,Checkmate,185
 141,Draw,Max Moves,200
-142,Draw,Max Moves,200
-143,Draw,Max Moves,200
-144,Draw,Max Moves,200
-145,Draw,Max Moves,200
-146,Draw,Max Moves,200
+142,Bot1_Black,Checkmate,146
+143,Bot2_Black,Checkmate,88
+144,Bot1_Black,Checkmate,68
+145,Bot2_Black,Checkmate,106
+146,Bot1_Black,Checkmate,92
 147,Draw,Max Moves,200
 148,Draw,Max Moves,200
-149,Draw,Max Moves,200
-150,Draw,Max Moves,200
-151,Draw,Max Moves,200
-152,Draw,Max Moves,200
-153,Draw,Max Moves,200
-154,Draw,Max Moves,200
-155,Draw,Max Moves,200
-156,Draw,Max Moves,200
-157,Draw,Max Moves,200
-158,Draw,Max Moves,200
-159,Draw,Max Moves,200
-160,Draw,Max Moves,200
-161,Draw,Max Moves,200
-162,Draw,Max Moves,200
-163,Draw,Max Moves,200
-164,Draw,Repetition,111
-165,Draw,Max Moves,200
-166,Draw,Max Moves,200
+149,Bot2_Black,Checkmate,172
+150,Bot1_Black,Checkmate,96
+151,Draw,Repetition,125
+152,Bot1_Black,Checkmate,92
+153,Bot2_Black,Checkmate,60
+154,Bot1_Black,Checkmate,60
+155,Bot2_Black,Checkmate,84
+156,Bot1_Black,Checkmate,184
+157,Bot2_Black,Checkmate,98
+158,Bot1_Black,Checkmate,136
+159,Bot2_Black,Checkmate,64
+160,Bot1_Black,Checkmate,120
+161,Bot1_White,Checkmate,89
+162,Bot1_Black,Checkmate,126
+163,Bot2_Black,Checkmate,90
+164,Bot1_Black,Checkmate,142
+165,Bot1_White,Checkmate,137
+166,Bot1_Black,Checkmate,84
 167,Draw,Max Moves,200
-168,Draw,Max Moves,200
-169,Draw,Max Moves,200
-170,Draw,Max Moves,200
-171,Draw,Max Moves,200
-172,Draw,Max Moves,200
-173,Draw,Max Moves,200
-174,Draw,Max Moves,200
-175,Draw,Max Moves,200
-176,Draw,Max Moves,200
-177,Draw,Max Moves,200
-178,Draw,Max Moves,200
-179,Draw,Max Moves,200
-180,Bot1_Black,Checkmate,54
-181,Draw,Max Moves,200
+168,Bot1_Black,Checkmate,74
+169,Bot2_Black,Checkmate,42
+170,Bot2_White,Checkmate,161
+171,Bot1_White,Checkmate,103
+172,Bot2_White,Checkmate,75
+173,Bot2_Black,Checkmate,82
+174,Bot1_Black,Checkmate,70
+175,Bot1_White,Checkmate,69
+176,Bot2_White,Checkmate,181
+177,Bot2_Black,Checkmate,138
+178,Bot2_White,Checkmate,153
+179,Bot1_White,Checkmate,89
+180,Draw,Max Moves,200
+181,Bot2_Black,Checkmate,94
 182,Draw,Max Moves,200
-183,Draw,Max Moves,200
-184,Draw,Max Moves,200
-185,Draw,Max Moves,200
-186,Draw,Repetition,93
+183,Bot1_White,Checkmate,163
+184,Bot1_Black,Checkmate,74
+185,Bot1_White,Checkmate,191
+186,Bot1_Black,Checkmate,62
 187,Draw,Max Moves,200
-188,Draw,Max Moves,200
+188,Bot1_Black,Checkmate,70
 189,Draw,Max Moves,200
-190,Draw,Max Moves,200
+190,Bot1_Black,Checkmate,80
 191,Draw,Max Moves,200
-192,Draw,Max Moves,200
+192,Bot2_White,Checkmate,161
 193,Draw,Max Moves,200
-194,Draw,Max Moves,200
-195,Draw,Max Moves,200
-196,Draw,Max Moves,200
-197,Draw,Max Moves,200
-198,Draw,Max Moves,200
-199,Draw,Max Moves,200
-200,Draw,Max Moves,200
-201,Draw,Max Moves,200
-202,Draw,Max Moves,200
-203,Draw,Max Moves,200
-204,Draw,Max Moves,200
-205,Draw,Max Moves,200
-206,Draw,Max Moves,200
-207,Draw,Max Moves,200
-208,Draw,Max Moves,200
-209,Draw,Max Moves,200
-210,Draw,Max Moves,200
-211,Draw,Max Moves,200
-212,Draw,Max Moves,200
-213,Draw,Max Moves,200
-214,Draw,Max Moves,200
-215,Draw,Max Moves,200
-216,Draw,Repetition,185
-217,Draw,Max Moves,200
-218,Draw,Max Moves,200
-219,Draw,Max Moves,200
-220,Draw,Max Moves,200
-221,Draw,Max Moves,200
-222,Draw,Repetition,118
-223,Draw,Max Moves,200
+194,Bot2_White,Checkmate,57
+195,Bot2_Black,Checkmate,124
+196,Bot2_White,Checkmate,71
+197,Bot2_Black,Checkmate,98
+198,Bot1_Black,Checkmate,156
+199,Bot2_Black,Checkmate,172
+200,Bot2_White,Checkmate,127
+201,Bot2_Black,Checkmate,96
+202,Bot2_White,Checkmate,175
+203,Bot2_Black,Checkmate,90
+204,Bot1_Black,Checkmate,120
+205,Bot1_White,Checkmate,121
+206,Bot2_White,Checkmate,73
+207,Bot1_White,Checkmate,61
+208,Draw,Repetition,198
+209,Bot2_Black,Checkmate,108
+210,Bot1_Black,Checkmate,182
+211,Bot1_White,Checkmate,135
+212,Draw,Repetition,160
+213,Bot2_Black,Checkmate,84
+214,Bot1_Black,Checkmate,178
+215,Bot1_White,Checkmate,141
+216,Bot1_Black,Checkmate,126
+217,Bot1_White,Checkmate,89
+218,Bot1_Black,Checkmate,98
+219,Bot2_Black,Checkmate,144
+220,Bot1_Black,Checkmate,136
+221,Bot2_Black,Checkmate,114
+222,Bot1_Black,Checkmate,140
+223,Bot2_Black,Checkmate,70
 224,Draw,Max Moves,200
-225,Draw,Max Moves,200
-226,Draw,Max Moves,200
-227,Draw,Max Moves,200
-228,Draw,Max Moves,200
-229,Draw,Max Moves,200
-230,Draw,Max Moves,200
-231,Draw,Max Moves,200
-232,Draw,Stalemate,119
-233,Draw,Max Moves,200
-234,Draw,Max Moves,200
-235,Draw,Max Moves,200
+225,Bot1_White,Checkmate,121
+226,Bot1_Black,Checkmate,60
+227,Bot2_Black,Checkmate,116
+228,Bot2_White,Checkmate,57
+229,Bot2_Black,Checkmate,102
+230,Bot2_White,Checkmate,99
+231,Bot1_White,Checkmate,93
+232,Bot1_Black,Checkmate,148
+233,Bot1_White,Checkmate,91
+234,Bot2_White,Checkmate,143
+235,Bot2_Black,Checkmate,102
 236,Draw,Max Moves,200
-237,Draw,Max Moves,200
+237,Bot2_Black,Checkmate,130
 238,Draw,Max Moves,200
-239,Draw,Repetition,72
-240,Draw,Max Moves,200
-241,Draw,Max Moves,200
-242,Draw,Max Moves,200
-243,Draw,Max Moves,200
-244,Draw,Max Moves,200
-245,Draw,Max Moves,200
-246,Draw,Max Moves,200
-247,Draw,Max Moves,200
-248,Draw,Max Moves,200
-249,Draw,Max Moves,200
-250,Draw,Max Moves,200
-251,Draw,Max Moves,200
-252,Draw,Max Moves,200
-253,Draw,Max Moves,200
-254,Draw,Repetition,65
-255,Draw,Max Moves,200
+239,Bot2_Black,Checkmate,150
+240,Bot1_Black,Checkmate,158
+241,Bot2_Black,Checkmate,126
+242,Bot1_Black,Checkmate,120
+243,Bot2_Black,Checkmate,96
+244,Bot1_Black,Checkmate,106
+245,Bot2_Black,Checkmate,90
+246,Bot1_Black,Checkmate,58
+247,Bot1_White,Checkmate,57
+248,Bot2_White,Checkmate,129
+249,Bot2_Black,Checkmate,124
+250,Bot1_Black,Checkmate,118
+251,Bot2_Black,Checkmate,94
+252,Bot2_White,Checkmate,85
+253,Bot1_White,Checkmate,181
+254,Bot2_White,Checkmate,133
+255,Bot2_Black,Checkmate,64
 256,Draw,Max Moves,200
-257,Draw,Max Moves,200
-258,Draw,Max Moves,200
-259,Draw,Max Moves,200
-260,Draw,Max Moves,200
-261,Draw,Max Moves,200
-262,Draw,Max Moves,200
+257,Bot2_Black,Checkmate,102
+258,Bot1_Black,Checkmate,72
+259,Bot2_Black,Checkmate,50
+260,Bot1_Black,Checkmate,102
+261,Bot2_Black,Checkmate,122
+262,Bot1_Black,Checkmate,86
 263,Draw,Max Moves,200
-264,Draw,Max Moves,200
-265,Draw,Max Moves,200
-266,Draw,Max Moves,200
-267,Draw,Max Moves,200
-268,Draw,Max Moves,200
-269,Draw,Max Moves,200
-270,Draw,Max Moves,200
-271,Draw,Max Moves,200
-272,Bot1_Black,Checkmate,46
-273,Draw,Max Moves,200
+264,Bot1_Black,Checkmate,76
+265,Bot2_Black,Checkmate,134
+266,Bot2_White,Checkmate,135
+267,Bot2_Black,Checkmate,82
+268,Bot1_Black,Checkmate,98
+269,Draw,Repetition,108
+270,Bot1_Black,Checkmate,122
+271,Bot2_Black,Checkmate,146
+272,Bot1_Black,Checkmate,138
+273,Bot2_Black,Checkmate,114
 274,Draw,Max Moves,200
-275,Draw,Max Moves,200
-276,Draw,Max Moves,200
-277,Draw,Max Moves,200
+275,Bot1_White,Checkmate,165
+276,Bot1_Black,Checkmate,106
+277,Bot2_Black,Checkmate,78
 278,Draw,Max Moves,200
-279,Draw,Max Moves,200
-280,Draw,Max Moves,200
-281,Draw,Repetition,80
-282,Draw,Repetition,56
-283,Draw,Max Moves,200
-284,Draw,Max Moves,200
-285,Draw,Max Moves,200
-286,Draw,Repetition,146
-287,Draw,Max Moves,200
-288,Draw,Max Moves,200
-289,Draw,Max Moves,200
-290,Draw,Max Moves,200
-291,Draw,Max Moves,200
-292,Draw,Max Moves,200
-293,Draw,Max Moves,200
-294,Draw,Max Moves,200
-295,Draw,Max Moves,200
-296,Draw,Max Moves,200
-297,Draw,Max Moves,200
-298,Draw,Max Moves,200
-299,Draw,Max Moves,200
-300,Draw,Max Moves,200
+279,Bot2_Black,Checkmate,104
+280,Bot2_White,Checkmate,89
+281,Bot2_Black,Checkmate,138
+282,Bot1_Black,Checkmate,190
+283,Bot2_Black,Checkmate,110
+284,Bot1_Black,Checkmate,142
+285,Bot2_Black,Checkmate,134
+286,Bot1_Black,Checkmate,66
+287,Bot1_White,Checkmate,83
+288,Bot2_White,Checkmate,103
+289,Bot2_Black,Checkmate,182
+290,Bot2_White,Checkmate,105
+291,Bot2_Black,Checkmate,100
+292,Bot1_Black,Checkmate,84
+293,Bot2_Black,Checkmate,86
+294,Bot1_Black,Checkmate,84
+295,Bot2_Black,Checkmate,108
+296,Bot2_White,Checkmate,123
+297,Bot2_Black,Checkmate,86
+298,Bot2_White,Checkmate,133
+299,Bot1_White,Checkmate,75
+300,Bot1_Black,Checkmate,158
 301,Draw,Max Moves,200
-302,Draw,Max Moves,200
-303,Draw,Max Moves,200
-304,Draw,Max Moves,200
-305,Draw,Max Moves,200
-306,Draw,Max Moves,200
-307,Draw,Max Moves,200
+302,Bot1_Black,Checkmate,168
+303,Bot2_Black,Checkmate,64
+304,Bot2_White,Checkmate,143
+305,Bot2_Black,Checkmate,82
+306,Bot1_Black,Checkmate,64
+307,Bot2_Black,Checkmate,76
 308,Draw,Max Moves,200
 309,Draw,Max Moves,200
-310,Draw,Max Moves,200
-311,Draw,Max Moves,200
-312,Draw,Max Moves,200
-313,Draw,Max Moves,200
+310,Bot1_Black,Checkmate,100
+311,Bot2_Black,Checkmate,72
+312,Bot1_Black,Checkmate,158
+313,Bot2_Black,Checkmate,150
 314,Draw,Max Moves,200
 315,Draw,Max Moves,200
-316,Draw,Max Moves,200
-317,Draw,Max Moves,200
-318,Draw,Max Moves,200
-319,Draw,Max Moves,200
+316,Bot2_White,Checkmate,107
+317,Bot1_White,Checkmate,77
+318,Bot1_Black,Checkmate,192
+319,Bot1_White,Checkmate,189
 320,Draw,Max Moves,200
-321,Draw,Max Moves,200
-322,Draw,Repetition,144
-323,Draw,Max Moves,200
-324,Draw,Max Moves,200
-325,Bot2_Black,Checkmate,70
-326,Draw,Max Moves,200
-327,Draw,Repetition,92
-328,Draw,Max Moves,200
-329,Draw,Max Moves,200
-330,Draw,Repetition,97
-331,Draw,Repetition,151
-332,Draw,Max Moves,200
-333,Draw,Max Moves,200
-334,Draw,Max Moves,200
-335,Draw,Max Moves,200
-336,Draw,Max Moves,200
-337,Draw,Max Moves,200
-338,Draw,Max Moves,200
-339,Draw,Max Moves,200
-340,Draw,Max Moves,200
-341,Draw,Max Moves,200
-342,Draw,Max Moves,200
-343,Draw,Max Moves,200
+321,Bot1_White,Checkmate,109
+322,Bot1_Black,Checkmate,100
+323,Bot1_White,Checkmate,125
+324,Bot2_White,Checkmate,195
+325,Bot2_Black,Checkmate,142
+326,Bot1_Black,Checkmate,120
+327,Bot2_Black,Checkmate,142
+328,Bot1_Black,Checkmate,84
+329,Bot1_White,Checkmate,175
+330,Bot2_White,Checkmate,105
+331,Bot1_White,Checkmate,59
+332,Bot1_Black,Checkmate,84
+333,Bot2_Black,Checkmate,88
+334,Bot2_White,Checkmate,119
+335,Bot1_White,Checkmate,141
+336,Bot2_White,Checkmate,59
+337,Bot2_Black,Checkmate,54
+338,Bot1_Black,Checkmate,170
+339,Bot2_Black,Checkmate,72
+340,Bot2_White,Checkmate,111
+341,Bot2_Black,Checkmate,86
+342,Bot1_Black,Checkmate,194
+343,Bot2_Black,Checkmate,96
 344,Draw,Max Moves,200
-345,Draw,Max Moves,200
-346,Draw,Max Moves,200
-347,Draw,Max Moves,200
-348,Draw,Max Moves,200
-349,Draw,Max Moves,200
-350,Draw,Max Moves,200
-351,Draw,Max Moves,200
+345,Bot2_Black,Checkmate,130
+346,Bot1_Black,Checkmate,90
+347,Bot2_Black,Checkmate,72
+348,Bot1_Black,Checkmate,110
+349,Bot2_Black,Checkmate,64
+350,Bot2_White,Checkmate,145
+351,Bot2_Black,Checkmate,164
 352,Draw,Max Moves,200
-353,Draw,Max Moves,200
-354,Draw,Max Moves,200
-355,Draw,Max Moves,200
-356,Draw,Max Moves,200
+353,Bot2_Black,Checkmate,152
+354,Bot1_Black,Checkmate,122
+355,Draw,Repetition,136
+356,Bot2_White,Checkmate,187
 357,Draw,Max Moves,200
-358,Draw,Max Moves,200
-359,Draw,Max Moves,200
-360,Draw,Max Moves,200
-361,Draw,Max Moves,200
-362,Draw,Max Moves,200
-363,Bot2_Black,Checkmate,54
-364,Draw,Max Moves,200
-365,Draw,Max Moves,200
-366,Draw,Max Moves,200
-367,Draw,Max Moves,200
-368,Draw,Max Moves,200
-369,Draw,Max Moves,200
-370,Draw,Max Moves,200
-371,Draw,Max Moves,200
-372,Draw,Max Moves,200
-373,Draw,Max Moves,200
-374,Draw,Max Moves,200
-375,Draw,Max Moves,200
-376,Draw,Max Moves,200
-377,Draw,Max Moves,200
+358,Bot1_Black,Checkmate,190
+359,Bot2_Black,Checkmate,140
+360,Bot1_Black,Checkmate,148
+361,Bot2_Black,Checkmate,148
+362,Bot1_Black,Checkmate,162
+363,Bot2_Black,Checkmate,136
+364,Bot1_Black,Checkmate,100
+365,Bot2_Black,Checkmate,54
+366,Bot1_Black,Checkmate,58
+367,Bot1_White,Checkmate,153
+368,Bot1_Black,Checkmate,70
+369,Bot1_White,Checkmate,167
+370,Bot1_Black,Checkmate,90
+371,Bot1_White,Checkmate,87
+372,Bot1_Black,Checkmate,122
+373,Bot2_Black,Checkmate,68
+374,Bot1_Black,Checkmate,116
+375,Bot2_Black,Checkmate,126
+376,Bot2_White,Checkmate,115
+377,Bot2_Black,Checkmate,122
 378,Draw,Max Moves,200
-379,Draw,Max Moves,200
-380,Bot2_White,Checkmate,133
-381,Draw,Max Moves,200
-382,Draw,Max Moves,200
-383,Draw,Max Moves,200
-384,Draw,Max Moves,200
-385,Draw,Max Moves,200
-386,Draw,Max Moves,200
-387,Draw,Stalemate,168
-388,Draw,Max Moves,200
-389,Draw,Max Moves,200
-390,Draw,Max Moves,200
-391,Draw,Max Moves,200
-392,Draw,Max Moves,200
-393,Draw,Repetition,129
-394,Draw,Max Moves,200
-395,Draw,Max Moves,200
-396,Draw,Max Moves,200
-397,Draw,Max Moves,200
-398,Draw,Max Moves,200
-399,Draw,Max Moves,200
-400,Draw,Max Moves,200
-401,Draw,Max Moves,200
-402,Draw,Max Moves,200
-403,Draw,Max Moves,200
-404,Draw,Max Moves,200
-405,Draw,Max Moves,200
+379,Bot2_Black,Checkmate,78
+380,Bot1_Black,Checkmate,58
+381,Bot2_Black,Checkmate,102
+382,Bot2_White,Checkmate,111
+383,Bot2_Black,Checkmate,104
+384,Bot1_Black,Checkmate,130
+385,Bot2_Black,Checkmate,146
+386,Bot1_Black,Checkmate,108
+387,Bot1_White,Checkmate,89
+388,Bot1_Black,Checkmate,104
+389,Bot2_Black,Checkmate,58
+390,Bot2_White,Checkmate,197
+391,Bot1_White,Checkmate,75
+392,Bot1_Black,Checkmate,134
+393,Draw,Max Moves,200
+394,Bot2_White,Checkmate,95
+395,Bot2_Black,Checkmate,48
+396,Bot1_Black,Checkmate,74
+397,Bot1_White,Checkmate,71
+398,Bot2_White,Checkmate,67
+399,Bot2_Black,Checkmate,122
+400,Bot1_Black,Checkmate,112
+401,Draw,Repetition,119
+402,Bot1_Black,Checkmate,82
+403,Bot2_Black,Checkmate,116
+404,Bot1_Black,Checkmate,126
+405,Bot2_Black,Checkmate,102
 406,Draw,Max Moves,200
-407,Draw,Repetition,161
-408,Draw,Max Moves,200
-409,Draw,Max Moves,200
-410,Draw,Repetition,139
-411,Draw,Max Moves,200
-412,Draw,Max Moves,200
-413,Draw,Max Moves,200
-414,Draw,Max Moves,200
+407,Bot2_Black,Checkmate,98
+408,Bot1_Black,Checkmate,128
+409,Bot1_White,Checkmate,119
+410,Bot1_Black,Checkmate,80
+411,Bot2_Black,Checkmate,150
+412,Bot1_Black,Checkmate,94
+413,Bot2_Black,Checkmate,136
+414,Bot1_Black,Checkmate,64
 415,Draw,Max Moves,200
-416,Draw,Max Moves,200
-417,Draw,Max Moves,200
-418,Draw,Max Moves,200
-419,Draw,Repetition,91
-420,Draw,Max Moves,200
+416,Bot2_White,Checkmate,179
+417,Bot2_Black,Checkmate,64
+418,Bot1_Black,Checkmate,110
+419,Bot2_Black,Checkmate,76
+420,Bot1_Black,Checkmate,152
 421,Draw,Max Moves,200
-422,Draw,Repetition,156
-423,Draw,Max Moves,200
-424,Draw,Max Moves,200
-425,Draw,Max Moves,200
-426,Draw,Max Moves,200
-427,Draw,Max Moves,200
-428,Draw,Max Moves,200
-429,Draw,Max Moves,200
-430,Draw,Max Moves,200
-431,Draw,Max Moves,200
-432,Draw,Max Moves,200
-433,Draw,Max Moves,200
-434,Draw,Max Moves,200
+422,Bot1_Black,Checkmate,182
+423,Bot2_Black,Checkmate,60
+424,Bot2_White,Checkmate,135
+425,Bot2_Black,Checkmate,164
+426,Bot2_White,Checkmate,85
+427,Bot2_Black,Checkmate,142
+428,Bot1_Black,Checkmate,60
+429,Bot2_Black,Checkmate,156
+430,Bot1_Black,Checkmate,72
+431,Bot2_Black,Checkmate,164
+432,Bot1_Black,Checkmate,86
+433,Bot1_White,Checkmate,135
+434,Bot2_White,Checkmate,79
 435,Draw,Max Moves,200
-436,Draw,Max Moves,200
-437,Draw,Max Moves,200
-438,Draw,Max Moves,200
-439,Draw,Max Moves,200
+436,Bot2_White,Checkmate,181
+437,Bot1_White,Checkmate,53
+438,Bot1_Black,Checkmate,88
+439,Bot2_Black,Checkmate,90
 440,Draw,Max Moves,200
 441,Draw,Max Moves,200
 442,Draw,Max Moves,200
-443,Draw,Stalemate,115
-444,Draw,Max Moves,200
-445,Draw,Max Moves,200
-446,Draw,Max Moves,200
-447,Draw,Max Moves,200
-448,Draw,Max Moves,200
+443,Bot2_Black,Checkmate,72
+444,Bot1_Black,Checkmate,96
+445,Bot1_White,Checkmate,155
+446,Bot2_White,Checkmate,105
+447,Bot2_Black,Checkmate,114
+448,Bot1_Black,Checkmate,94
 449,Draw,Max Moves,200
-450,Draw,Max Moves,200
-451,Draw,Max Moves,200
-452,Draw,Max Moves,200
-453,Draw,Max Moves,200
-454,Draw,Max Moves,200
-455,Draw,Max Moves,200
-456,Draw,Max Moves,200
-457,Draw,Max Moves,200
-458,Draw,Max Moves,200
+450,Bot2_White,Checkmate,117
+451,Bot1_White,Checkmate,77
+452,Bot1_Black,Checkmate,174
+453,Bot1_White,Checkmate,99
+454,Bot1_Black,Checkmate,102
+455,Bot2_Black,Checkmate,84
+456,Bot1_Black,Checkmate,158
+457,Bot2_Black,Checkmate,72
+458,Bot2_White,Checkmate,65
 459,Draw,Max Moves,200
-460,Bot1_Black,Checkmate,88
-461,Draw,Max Moves,200
-462,Draw,Max Moves,200
-463,Draw,Max Moves,200
+460,Draw,Max Moves,200
+461,Bot1_White,Checkmate,119
+462,Bot1_Black,Checkmate,82
+463,Bot2_Black,Checkmate,80
 464,Draw,Max Moves,200
-465,Draw,Max Moves,200
+465,Bot2_Black,Checkmate,124
 466,Draw,Max Moves,200
-467,Draw,Max Moves,200
-468,Draw,Max Moves,200
+467,Bot2_Black,Checkmate,96
+468,Bot1_Black,Checkmate,78
 469,Draw,Max Moves,200
-470,Draw,Max Moves,200
-471,Draw,Max Moves,200
+470,Bot1_Black,Checkmate,146
+471,Bot2_Black,Checkmate,68
 472,Draw,Max Moves,200
-473,Draw,Max Moves,200
-474,Draw,Max Moves,200
+473,Bot2_Black,Checkmate,72
+474,Bot1_Black,Checkmate,110
 475,Draw,Max Moves,200
-476,Draw,Max Moves,200
-477,Draw,Max Moves,200
-478,Draw,Max Moves,200
-479,Draw,Max Moves,200
-480,Draw,Max Moves,200
-481,Draw,Max Moves,200
-482,Draw,Max Moves,200
-483,Draw,Max Moves,200
-484,Draw,Repetition,118
-485,Draw,Max Moves,200
-486,Draw,Max Moves,200
+476,Bot2_White,Checkmate,115
+477,Bot1_White,Checkmate,115
+478,Draw,Repetition,81
+479,Bot2_Black,Checkmate,192
+480,Bot1_Black,Checkmate,96
+481,Bot2_Black,Checkmate,130
+482,Bot1_Black,Checkmate,60
+483,Bot2_Black,Checkmate,92
+484,Bot1_Black,Checkmate,108
+485,Bot1_White,Checkmate,133
+486,Bot1_Black,Checkmate,72
 487,Draw,Max Moves,200
-488,Draw,Max Moves,200
-489,Draw,Max Moves,200
-490,Draw,Repetition,117
-491,Draw,Max Moves,200
-492,Draw,Max Moves,200
-493,Draw,Max Moves,200
-494,Draw,Max Moves,200
-495,Draw,Max Moves,200
-496,Draw,Max Moves,200
-497,Draw,Max Moves,200
-498,Draw,Max Moves,200
-499,Draw,Max Moves,200
-500,Draw,Max Moves,200
-501,Draw,Repetition,171
-502,Draw,Max Moves,200
-503,Draw,Max Moves,200
-504,Draw,Max Moves,200
-505,Draw,Max Moves,200
-506,Draw,Max Moves,200
-507,Draw,Stalemate,186
-508,Draw,Max Moves,200
-509,Draw,Max Moves,200
-510,Draw,Max Moves,200
-511,Draw,Max Moves,200
-512,Draw,Max Moves,200
-513,Draw,Max Moves,200
-514,Draw,Max Moves,200
+488,Bot1_Black,Checkmate,88
+489,Bot2_Black,Checkmate,98
+490,Bot1_Black,Checkmate,90
+491,Bot1_White,Checkmate,73
+492,Bot2_White,Checkmate,107
+493,Bot1_White,Checkmate,103
+494,Bot1_Black,Checkmate,84
+495,Bot2_Black,Checkmate,52
+496,Bot1_Black,Checkmate,88
+497,Bot2_Black,Checkmate,86
+498,Bot2_White,Checkmate,61
+499,Bot2_Black,Checkmate,86
+500,Bot2_White,Checkmate,131
+501,Bot2_Black,Checkmate,66
+502,Bot1_Black,Checkmate,60
+503,Bot2_Black,Checkmate,132
+504,Bot1_Black,Checkmate,154
+505,Bot2_Black,Checkmate,88
+506,Bot1_Black,Checkmate,152
+507,Bot1_White,Checkmate,113
+508,Bot2_White,Checkmate,133
+509,Bot2_Black,Checkmate,174
+510,Bot2_White,Checkmate,79
+511,Bot2_Black,Checkmate,140
+512,Bot1_Black,Checkmate,78
+513,Bot1_White,Checkmate,99
+514,Bot1_Black,Checkmate,108
 515,Draw,Max Moves,200
-516,Draw,Max Moves,200
-517,Draw,Max Moves,200
-518,Draw,Max Moves,200
-519,Draw,Max Moves,200
-520,Draw,Max Moves,200
-521,Draw,Max Moves,200
-522,Draw,Max Moves,200
-523,Draw,Stalemate,155
-524,Draw,Max Moves,200
-525,Draw,Max Moves,200
-526,Draw,Repetition,83
-527,Draw,Max Moves,200
-528,Draw,Max Moves,200
-529,Draw,Max Moves,200
-530,Draw,Max Moves,200
-531,Draw,Max Moves,200
-532,Draw,Max Moves,200
-533,Draw,Max Moves,200
+516,Bot2_White,Checkmate,87
+517,Bot2_Black,Checkmate,80
+518,Bot2_White,Checkmate,135
+519,Bot2_Black,Checkmate,124
+520,Bot1_Black,Checkmate,180
+521,Bot2_Black,Checkmate,76
+522,Bot1_Black,Checkmate,188
+523,Bot2_Black,Checkmate,144
+524,Bot2_White,Checkmate,127
+525,Bot1_White,Checkmate,161
+526,Bot1_Black,Checkmate,110
+527,Bot1_White,Checkmate,91
+528,Bot2_White,Checkmate,93
+529,Bot2_Black,Checkmate,102
+530,Bot1_Black,Checkmate,146
+531,Bot1_White,Checkmate,119
+532,Bot1_Black,Checkmate,96
+533,Bot2_Black,Checkmate,54
 534,Draw,Max Moves,200
-535,Draw,Max Moves,200
+535,Bot2_Black,Checkmate,84
 536,Draw,Max Moves,200
-537,Draw,Max Moves,200
-538,Draw,Max Moves,200
-539,Draw,Max Moves,200
-540,Draw,Max Moves,200
-541,Draw,Max Moves,200
+537,Bot2_Black,Checkmate,116
+538,Bot1_Black,Checkmate,118
+539,Bot2_Black,Checkmate,98
+540,Bot1_Black,Checkmate,146
+541,Bot1_White,Checkmate,59
 542,Draw,Max Moves,200
-543,Draw,Max Moves,200
-544,Draw,Max Moves,200
+543,Bot2_Black,Checkmate,90
+544,Bot1_Black,Checkmate,60
 545,Draw,Max Moves,200
-546,Draw,Repetition,122
+546,Draw,Max Moves,200
 547,Draw,Max Moves,200
-548,Draw,Max Moves,200
-549,Draw,Max Moves,200
-550,Draw,Repetition,154
-551,Draw,Max Moves,200
-552,Draw,Max Moves,200
-553,Draw,Max Moves,200
-554,Draw,Max Moves,200
-555,Draw,Max Moves,200
-556,Draw,Repetition,145
-557,Draw,Max Moves,200
-558,Draw,Max Moves,200
-559,Draw,Max Moves,200
+548,Draw,Repetition,116
+549,Bot2_Black,Checkmate,82
+550,Bot2_White,Checkmate,113
+551,Bot2_Black,Checkmate,82
+552,Bot1_Black,Checkmate,84
+553,Bot2_Black,Checkmate,86
+554,Bot1_Black,Checkmate,86
+555,Bot2_Black,Checkmate,172
+556,Draw,Max Moves,200
+557,Draw,Repetition,118
+558,Bot1_Black,Checkmate,138
+559,Bot2_Black,Checkmate,86
 560,Draw,Max Moves,200
-561,Draw,Max Moves,200
-562,Draw,Max Moves,200
-563,Draw,Max Moves,200
-564,Draw,Max Moves,200
-565,Draw,Max Moves,200
-566,Draw,Max Moves,200
-567,Draw,Max Moves,200
-568,Draw,Max Moves,200
-569,Draw,Max Moves,200
+561,Bot2_Black,Checkmate,82
+562,Bot2_White,Checkmate,81
+563,Bot2_Black,Checkmate,68
+564,Bot1_Black,Checkmate,72
+565,Bot2_Black,Checkmate,146
+566,Bot1_Black,Checkmate,200
+567,Bot1_White,Checkmate,133
+568,Bot1_Black,Checkmate,102
+569,Bot2_Black,Checkmate,72
 570,Draw,Max Moves,200
-571,Draw,Max Moves,200
-572,Draw,Repetition,100
-573,Draw,Max Moves,200
-574,Draw,Max Moves,200
-575,Draw,Max Moves,200
-576,Draw,Max Moves,200
-577,Draw,Max Moves,200
-578,Draw,Max Moves,200
-579,Draw,Max Moves,200
+571,Bot2_Black,Checkmate,118
+572,Bot1_Black,Checkmate,138
+573,Bot2_Black,Checkmate,146
+574,Bot1_Black,Checkmate,140
+575,Bot1_White,Checkmate,195
+576,Bot2_White,Checkmate,97
+577,Bot1_White,Checkmate,153
+578,Bot1_Black,Checkmate,74
+579,Bot1_White,Checkmate,53
 580,Draw,Max Moves,200
-581,Draw,Max Moves,200
-582,Draw,Max Moves,200
-583,Draw,Max Moves,200
-584,Draw,Max Moves,200
-585,Draw,Max Moves,200
-586,Draw,Max Moves,200
-587,Draw,Max Moves,200
-588,Draw,Max Moves,200
+581,Bot2_Black,Checkmate,58
+582,Bot1_Black,Checkmate,136
+583,Bot2_Black,Checkmate,80
+584,Draw,Repetition,105
+585,Bot1_White,Checkmate,107
+586,Bot1_Black,Checkmate,146
+587,Bot1_White,Checkmate,79
+588,Bot1_Black,Checkmate,100
 589,Draw,Max Moves,200
-590,Draw,Max Moves,200
-591,Draw,Max Moves,200
-592,Draw,Repetition,105
-593,Draw,Max Moves,200
-594,Bot1_Black,Checkmate,50
-595,Draw,Max Moves,200
-596,Draw,Max Moves,200
-597,Draw,Max Moves,200
-598,Draw,Repetition,67
-599,Draw,Max Moves,200
-600,Draw,Max Moves,200
-601,Draw,Max Moves,200
-602,Draw,Max Moves,200
-603,Draw,Max Moves,200
-604,Draw,Max Moves,200
-605,Draw,Max Moves,200
-606,Draw,Max Moves,200
-607,Draw,Max Moves,200
-608,Draw,Max Moves,200
-609,Draw,Max Moves,200
-610,Draw,Max Moves,200
-611,Draw,Repetition,185
-612,Draw,Max Moves,200
+590,Bot2_White,Checkmate,85
+591,Bot2_Black,Checkmate,144
+592,Bot1_Black,Checkmate,112
+593,Draw,Repetition,105
+594,Bot1_Black,Checkmate,114
+595,Bot2_Black,Checkmate,60
+596,Bot1_Black,Checkmate,192
+597,Bot1_White,Checkmate,85
+598,Bot1_Black,Checkmate,124
+599,Bot1_White,Checkmate,115
+600,Bot1_Black,Checkmate,84
+601,Bot2_Black,Checkmate,98
+602,Bot1_Black,Checkmate,148
+603,Bot1_White,Checkmate,93
+604,Bot1_Black,Checkmate,96
+605,Bot2_Black,Checkmate,68
+606,Bot2_White,Checkmate,65
+607,Bot2_Black,Checkmate,104
+608,Bot1_Black,Checkmate,106
+609,Bot1_White,Checkmate,71
+610,Bot1_Black,Checkmate,88
+611,Bot2_Black,Checkmate,198
+612,Bot1_Black,Checkmate,152
 613,Draw,Max Moves,200
-614,Draw,Max Moves,200
-615,Draw,Max Moves,200
-616,Draw,Repetition,62
-617,Draw,Max Moves,200
-618,Draw,Max Moves,200
-619,Draw,Repetition,82
-620,Draw,Max Moves,200
-621,Draw,Max Moves,200
-622,Draw,Max Moves,200
-623,Draw,Max Moves,200
-624,Draw,Max Moves,200
-625,Draw,Repetition,121
-626,Draw,Max Moves,200
-627,Draw,Max Moves,200
-628,Draw,Max Moves,200
-629,Draw,Max Moves,200
-630,Draw,Max Moves,200
-631,Draw,Max Moves,200
-632,Draw,Max Moves,200
+614,Bot2_White,Checkmate,175
+615,Bot2_Black,Checkmate,64
+616,Bot2_White,Checkmate,111
+617,Bot2_Black,Checkmate,82
+618,Bot1_Black,Checkmate,124
+619,Bot2_Black,Checkmate,88
+620,Bot2_White,Checkmate,169
+621,Bot2_Black,Checkmate,72
+622,Bot1_Black,Checkmate,74
+623,Bot1_White,Checkmate,61
+624,Bot1_Black,Checkmate,112
+625,Bot2_Black,Checkmate,80
+626,Draw,Repetition,102
+627,Bot2_Black,Checkmate,70
+628,Bot1_Black,Checkmate,90
+629,Bot2_Black,Checkmate,158
+630,Bot2_White,Checkmate,119
+631,Bot2_Black,Checkmate,116
+632,Bot2_White,Checkmate,85
 633,Draw,Max Moves,200
-634,Draw,Max Moves,200
-635,Draw,Max Moves,200
-636,Draw,Max Moves,200
-637,Draw,Max Moves,200
-638,Draw,Max Moves,200
-639,Draw,Max Moves,200
-640,Draw,Max Moves,200
-641,Draw,Max Moves,200
-642,Draw,Max Moves,200
-643,Draw,Stalemate,126
-644,Draw,Max Moves,200
-645,Draw,Max Moves,200
-646,Draw,Max Moves,200
-647,Draw,Max Moves,200
-648,Draw,Max Moves,200
+634,Bot2_White,Checkmate,169
+635,Bot2_Black,Checkmate,100
+636,Bot1_Black,Checkmate,118
+637,Bot2_Black,Checkmate,90
+638,Bot1_Black,Checkmate,108
+639,Bot2_Black,Checkmate,124
+640,Bot1_Black,Checkmate,122
+641,Bot2_Black,Checkmate,90
+642,Bot1_Black,Checkmate,132
+643,Bot1_White,Checkmate,93
+644,Bot1_Black,Checkmate,68
+645,Bot2_Black,Checkmate,90
+646,Bot1_Black,Checkmate,94
+647,Bot2_Black,Checkmate,64
+648,Bot1_Black,Checkmate,72
 649,Draw,Max Moves,200
-650,Draw,Max Moves,200
-651,Draw,Max Moves,200
-652,Draw,Max Moves,200
-653,Bot2_Black,Checkmate,80
-654,Draw,Max Moves,200
+650,Bot1_Black,Checkmate,78
+651,Bot2_Black,Checkmate,160
+652,Bot1_Black,Checkmate,72
+653,Draw,Max Moves,200
+654,Bot1_Black,Checkmate,88
 655,Draw,Max Moves,200
-656,Draw,Repetition,191
-657,Draw,Max Moves,200
-658,Draw,Max Moves,200
-659,Draw,Repetition,141
-660,Draw,Max Moves,200
-661,Draw,Max Moves,200
-662,Draw,Max Moves,200
+656,Bot1_Black,Checkmate,158
+657,Bot2_Black,Checkmate,120
+658,Bot1_Black,Checkmate,140
+659,Bot1_White,Checkmate,187
+660,Bot1_Black,Checkmate,60
+661,Bot2_Black,Checkmate,104
+662,Bot1_Black,Checkmate,98
 663,Draw,Max Moves,200
-664,Draw,Max Moves,200
-665,Draw,Max Moves,200
-666,Draw,Max Moves,200
-667,Draw,Max Moves,200
-668,Bot1_Black,Checkmate,102
-669,Draw,Max Moves,200
-670,Draw,Max Moves,200
-671,Draw,Max Moves,200
-672,Draw,Max Moves,200
+664,Bot1_Black,Checkmate,72
+665,Draw,Stalemate,146
+666,Bot1_Black,Checkmate,130
+667,Bot2_Black,Checkmate,72
+668,Bot2_White,Checkmate,153
+669,Draw,Repetition,177
+670,Bot1_Black,Checkmate,86
+671,Bot2_Black,Checkmate,64
+672,Bot2_White,Checkmate,127
 673,Draw,Max Moves,200
-674,Draw,Max Moves,200
-675,Draw,Max Moves,200
-676,Draw,Max Moves,200
+674,Bot2_White,Checkmate,85
+675,Bot2_Black,Checkmate,126
+676,Bot1_Black,Checkmate,108
 677,Draw,Max Moves,200
-678,Draw,Max Moves,200
-679,Draw,Max Moves,200
-680,Draw,Max Moves,200
-681,Draw,Max Moves,200
-682,Draw,Max Moves,200
+678,Draw,Repetition,106
+679,Bot2_Black,Checkmate,74
+680,Bot1_Black,Checkmate,72
+681,Bot2_Black,Checkmate,118
+682,Bot2_White,Checkmate,151
 683,Draw,Max Moves,200
-684,Draw,Max Moves,200
-685,Draw,Repetition,178
+684,Bot2_White,Checkmate,145
+685,Bot1_White,Checkmate,143
 686,Draw,Max Moves,200
-687,Draw,Max Moves,200
-688,Draw,Stalemate,193
+687,Bot1_White,Checkmate,77
+688,Bot1_Black,Checkmate,90
 689,Draw,Max Moves,200
-690,Draw,Max Moves,200
+690,Bot2_White,Checkmate,73
 691,Draw,Max Moves,200
-692,Draw,Repetition,176
-693,Draw,Max Moves,200
-694,Draw,Max Moves,200
-695,Draw,Max Moves,200
-696,Draw,Max Moves,200
-697,Draw,Max Moves,200
-698,Draw,Max Moves,200
+692,Bot1_Black,Checkmate,148
+693,Bot1_White,Checkmate,155
+694,Bot2_White,Checkmate,133
+695,Bot2_Black,Checkmate,72
+696,Bot1_Black,Checkmate,136
+697,Bot2_Black,Checkmate,72
+698,Bot1_Black,Checkmate,76
 699,Draw,Max Moves,200
-700,Bot1_Black,Checkmate,76
-701,Draw,Max Moves,200
-702,Draw,Max Moves,200
-703,Draw,Max Moves,200
-704,Draw,Max Moves,200
+700,Bot1_Black,Checkmate,68
+701,Bot2_Black,Checkmate,88
+702,Bot2_White,Checkmate,89
+703,Bot2_Black,Checkmate,98
+704,Bot1_Black,Checkmate,120
 705,Draw,Max Moves,200
-706,Draw,Max Moves,200
-707,Draw,Max Moves,200
+706,Bot2_White,Checkmate,135
+707,Bot2_Black,Checkmate,160
 708,Draw,Max Moves,200
-709,Bot2_Black,Checkmate,96
-710,Draw,Max Moves,200
-711,Draw,Max Moves,200
-712,Draw,Max Moves,200
-713,Draw,Max Moves,200
-714,Draw,Repetition,95
-715,Draw,Max Moves,200
-716,Draw,Max Moves,200
-717,Draw,Max Moves,200
-718,Draw,Stalemate,129
-719,Draw,Max Moves,200
-720,Draw,Repetition,80
-721,Draw,Max Moves,200
-722,Draw,Max Moves,200
-723,Draw,Max Moves,200
-724,Draw,Max Moves,200
-725,Draw,Max Moves,200
-726,Draw,Max Moves,200
-727,Draw,Max Moves,200
+709,Bot1_White,Checkmate,61
+710,Bot1_Black,Checkmate,84
+711,Bot1_White,Checkmate,83
+712,Bot1_Black,Checkmate,62
+713,Bot2_Black,Checkmate,88
+714,Bot2_White,Checkmate,65
+715,Bot2_Black,Checkmate,118
+716,Bot1_Black,Checkmate,156
+717,Bot2_Black,Checkmate,154
+718,Bot1_Black,Checkmate,60
+719,Bot1_White,Checkmate,127
+720,Bot1_Black,Checkmate,62
+721,Bot1_White,Checkmate,71
+722,Bot1_Black,Checkmate,88
+723,Bot1_White,Checkmate,105
+724,Bot2_White,Checkmate,59
+725,Bot2_Black,Checkmate,136
+726,Bot2_White,Checkmate,137
+727,Bot1_White,Checkmate,45
 728,Draw,Max Moves,200
-729,Draw,Max Moves,200
-730,Draw,Max Moves,200
+729,Bot2_Black,Checkmate,70
+730,Bot1_Black,Checkmate,170
 731,Draw,Max Moves,200
-732,Draw,Stalemate,134
-733,Draw,Max Moves,200
+732,Draw,Max Moves,200
+733,Bot2_Black,Checkmate,94
 734,Draw,Max Moves,200
-735,Draw,Repetition,151
-736,Draw,Max Moves,200
-737,Draw,Max Moves,200
-738,Draw,Max Moves,200
-739,Draw,Max Moves,200
-740,Draw,Max Moves,200
-741,Draw,Max Moves,200
-742,Draw,Repetition,137
+735,Bot2_Black,Checkmate,86
+736,Bot1_Black,Checkmate,88
+737,Bot2_Black,Checkmate,140
+738,Bot1_Black,Checkmate,118
+739,Draw,Repetition,89
+740,Bot1_Black,Checkmate,124
+741,Draw,Repetition,151
+742,Draw,Max Moves,200
 743,Draw,Max Moves,200
-744,Draw,Max Moves,200
-745,Draw,Max Moves,200
-746,Draw,Max Moves,200
+744,Bot2_White,Checkmate,153
+745,Bot2_Black,Checkmate,166
+746,Bot1_Black,Checkmate,58
 747,Draw,Max Moves,200
-748,Draw,Max Moves,200
-749,Draw,Repetition,70
-750,Draw,Max Moves,200
+748,Bot1_Black,Checkmate,198
+749,Bot1_White,Checkmate,127
+750,Bot1_Black,Checkmate,82
 751,Draw,Max Moves,200
-752,Draw,Max Moves,200
+752,Bot2_White,Checkmate,147
 753,Draw,Max Moves,200
-754,Draw,Max Moves,200
-755,Draw,Max Moves,200
-756,Draw,Max Moves,200
-757,Draw,Max Moves,200
-758,Draw,Max Moves,200
-759,Draw,Max Moves,200
+754,Bot1_Black,Checkmate,154
+755,Bot2_Black,Checkmate,126
+756,Bot1_Black,Checkmate,56
+757,Bot1_White,Checkmate,163
+758,Bot2_White,Checkmate,107
+759,Bot2_Black,Checkmate,120
 760,Draw,Max Moves,200
 761,Draw,Max Moves,200
-762,Draw,Max Moves,200
-763,Draw,Max Moves,200
+762,Bot1_Black,Checkmate,74
+763,Bot2_Black,Checkmate,136
 764,Draw,Max Moves,200
-765,Draw,Repetition,98
-766,Bot2_White,Checkmate,61
-767,Draw,Max Moves,200
-768,Draw,Max Moves,200
-769,Draw,Max Moves,200
-770,Draw,Max Moves,200
-771,Draw,Max Moves,200
+765,Bot2_Black,Checkmate,150
+766,Draw,Max Moves,200
+767,Draw,Repetition,67
+768,Bot2_White,Checkmate,61
+769,Bot2_Black,Checkmate,78
+770,Bot1_Black,Checkmate,126
+771,Bot2_Black,Checkmate,88
 772,Draw,Max Moves,200
-773,Draw,Max Moves,200
-774,Draw,Max Moves,200
+773,Bot2_Black,Checkmate,92
+774,Bot1_Black,Checkmate,94
 775,Draw,Max Moves,200
-776,Draw,Repetition,74
-777,Draw,Max Moves,200
-778,Draw,Max Moves,200
-779,Draw,Repetition,135
-780,Draw,Max Moves,200
-781,Draw,Max Moves,200
-782,Draw,Max Moves,200
-783,Draw,Max Moves,200
-784,Draw,Max Moves,200
-785,Draw,Max Moves,200
-786,Draw,Max Moves,200
+776,Draw,Max Moves,200
+777,Bot2_Black,Checkmate,124
+778,Draw,Repetition,115
+779,Bot2_Black,Checkmate,78
+780,Bot2_White,Checkmate,145
+781,Bot2_Black,Checkmate,76
+782,Bot1_Black,Checkmate,78
+783,Bot2_Black,Checkmate,78
+784,Bot2_White,Checkmate,165
+785,Bot2_Black,Checkmate,118
+786,Bot1_Black,Checkmate,170
 787,Draw,Max Moves,200
-788,Draw,Max Moves,200
+788,Bot2_White,Checkmate,83
 789,Draw,Max Moves,200
 790,Draw,Max Moves,200
-791,Draw,Max Moves,200
-792,Draw,Max Moves,200
+791,Bot2_Black,Checkmate,98
+792,Bot2_White,Checkmate,61
 793,Draw,Max Moves,200
-794,Draw,Max Moves,200
+794,Bot1_Black,Checkmate,160
 795,Draw,Max Moves,200
-796,Draw,Repetition,160
-797,Draw,Max Moves,200
-798,Bot1_Black,Checkmate,88
-799,Draw,Max Moves,200
-800,Draw,Repetition,173
-801,Draw,Max Moves,200
-802,Draw,Max Moves,200
-803,Draw,Max Moves,200
-804,Draw,Max Moves,200
-805,Draw,Max Moves,200
-806,Draw,Max Moves,200
-807,Draw,Max Moves,200
+796,Bot1_Black,Checkmate,196
+797,Bot1_White,Checkmate,93
+798,Bot1_Black,Checkmate,120
+799,Bot2_Black,Checkmate,180
+800,Bot2_White,Checkmate,99
+801,Bot2_Black,Checkmate,90
+802,Bot2_White,Checkmate,109
+803,Bot2_Black,Checkmate,102
+804,Draw,Stalemate,110
+805,Bot2_Black,Checkmate,162
+806,Bot1_Black,Checkmate,54
+807,Bot2_Black,Checkmate,84
 808,Draw,Max Moves,200
-809,Draw,Repetition,117
-810,Draw,Max Moves,200
-811,Draw,Max Moves,200
-812,Draw,Max Moves,200
-813,Draw,Max Moves,200
-814,Draw,Max Moves,200
-815,Draw,Max Moves,200
-816,Draw,Max Moves,200
-817,Draw,Max Moves,200
-818,Draw,Stalemate,135
-819,Draw,Max Moves,200
-820,Draw,Max Moves,200
-821,Draw,Max Moves,200
-822,Draw,Max Moves,200
-823,Draw,Max Moves,200
-824,Draw,Max Moves,200
-825,Draw,Max Moves,200
-826,Draw,Repetition,97
-827,Draw,Max Moves,200
-828,Draw,Max Moves,200
-829,Draw,Max Moves,200
-830,Draw,Max Moves,200
-831,Draw,Max Moves,200
-832,Draw,Max Moves,200
-833,Draw,Max Moves,200
-834,Draw,Max Moves,200
-835,Draw,Max Moves,200
+809,Bot2_Black,Checkmate,90
+810,Bot1_Black,Checkmate,84
+811,Bot2_Black,Checkmate,178
+812,Bot1_Black,Checkmate,72
+813,Bot1_White,Checkmate,175
+814,Bot1_Black,Checkmate,86
+815,Bot2_Black,Checkmate,94
+816,Bot2_White,Checkmate,109
+817,Bot1_White,Checkmate,117
+818,Bot1_Black,Checkmate,100
+819,Bot2_Black,Checkmate,142
+820,Bot1_Black,Checkmate,64
+821,Bot1_White,Checkmate,99
+822,Draw,Repetition,74
+823,Bot1_White,Checkmate,127
+824,Bot1_Black,Checkmate,60
+825,Bot1_White,Checkmate,81
+826,Draw,Max Moves,200
+827,Bot1_White,Checkmate,119
+828,Bot1_Black,Checkmate,76
+829,Bot2_Black,Checkmate,82
+830,Bot1_Black,Checkmate,152
+831,Bot2_Black,Checkmate,104
+832,Bot1_Black,Checkmate,108
+833,Bot2_Black,Checkmate,126
+834,Draw,Repetition,156
+835,Bot2_Black,Checkmate,90
 836,Draw,Max Moves,200
-837,Draw,Max Moves,200
-838,Draw,Max Moves,200
-839,Draw,Max Moves,200
-840,Draw,Repetition,119
-841,Draw,Max Moves,200
-842,Draw,Max Moves,200
-843,Draw,Max Moves,200
+837,Bot2_Black,Checkmate,104
+838,Bot1_Black,Checkmate,76
+839,Bot2_Black,Checkmate,70
+840,Bot1_Black,Checkmate,92
+841,Bot2_Black,Checkmate,186
+842,Bot1_Black,Checkmate,72
+843,Bot1_White,Checkmate,165
 844,Draw,Max Moves,200
-845,Draw,Max Moves,200
-846,Draw,Max Moves,200
-847,Draw,Max Moves,200
+845,Bot1_White,Checkmate,137
+846,Bot2_White,Checkmate,159
+847,Bot1_White,Checkmate,63
 848,Draw,Max Moves,200
-849,Draw,Max Moves,200
+849,Bot1_White,Checkmate,145
 850,Draw,Max Moves,200
-851,Draw,Max Moves,200
-852,Draw,Max Moves,200
-853,Draw,Max Moves,200
-854,Draw,Max Moves,200
-855,Draw,Max Moves,200
-856,Draw,Max Moves,200
-857,Draw,Max Moves,200
+851,Bot2_Black,Checkmate,72
+852,Bot1_Black,Checkmate,86
+853,Bot1_White,Checkmate,77
+854,Bot1_Black,Checkmate,58
+855,Bot2_Black,Checkmate,96
+856,Draw,Repetition,160
+857,Bot2_Black,Checkmate,84
 858,Draw,Max Moves,200
-859,Draw,Max Moves,200
-860,Draw,Max Moves,200
-861,Draw,Max Moves,200
-862,Draw,Max Moves,200
-863,Draw,Max Moves,200
-864,Draw,Max Moves,200
-865,Draw,Repetition,57
-866,Draw,Max Moves,200
+859,Bot2_Black,Checkmate,78
+860,Bot1_Black,Checkmate,196
+861,Bot2_Black,Checkmate,54
+862,Bot1_Black,Checkmate,98
+863,Bot2_Black,Checkmate,78
+864,Bot1_Black,Checkmate,164
+865,Bot2_Black,Checkmate,82
+866,Bot1_Black,Checkmate,148
 867,Draw,Max Moves,200
-868,Draw,Max Moves,200
-869,Draw,Max Moves,200
-870,Draw,Max Moves,200
-871,Draw,Repetition,129
+868,Bot1_Black,Checkmate,64
+869,Bot2_Black,Checkmate,112
+870,Bot1_Black,Checkmate,170
+871,Bot2_Black,Checkmate,122
 872,Draw,Max Moves,200
 873,Draw,Max Moves,200
-874,Draw,Max Moves,200
-875,Draw,Max Moves,200
-876,Draw,Max Moves,200
-877,Draw,Max Moves,200
-878,Draw,Max Moves,200
+874,Bot2_White,Checkmate,151
+875,Bot1_White,Checkmate,103
+876,Bot2_White,Checkmate,107
+877,Bot1_White,Checkmate,137
+878,Bot1_Black,Checkmate,118
 879,Draw,Max Moves,200
-880,Draw,Max Moves,200
-881,Draw,Max Moves,200
-882,Draw,Max Moves,200
-883,Draw,Repetition,117
-884,Draw,Max Moves,200
-885,Draw,Max Moves,200
+880,Bot2_White,Checkmate,131
+881,Bot1_White,Checkmate,193
+882,Bot1_Black,Checkmate,64
+883,Bot1_White,Checkmate,123
+884,Bot1_Black,Checkmate,154
+885,Bot2_Black,Checkmate,78
 886,Draw,Max Moves,200
-887,Draw,Repetition,83
-888,Draw,Max Moves,200
-889,Draw,Max Moves,200
-890,Draw,Max Moves,200
-891,Bot1_White,Checkmate,83
-892,Draw,Max Moves,200
+887,Bot1_White,Checkmate,143
+888,Bot2_White,Checkmate,83
+889,Bot2_Black,Checkmate,144
+890,Bot1_Black,Checkmate,88
+891,Bot1_White,Checkmate,73
+892,Bot1_Black,Checkmate,58
 893,Draw,Max Moves,200
-894,Draw,Max Moves,200
-895,Draw,Max Moves,200
-896,Draw,Max Moves,200
-897,Draw,Max Moves,200
-898,Draw,Max Moves,200
-899,Draw,Max Moves,200
-900,Draw,Max Moves,200
-901,Draw,Max Moves,200
-902,Draw,Max Moves,200
-903,Draw,Max Moves,200
-904,Bot1_Black,Checkmate,54
-905,Draw,Max Moves,200
-906,Draw,Max Moves,200
-907,Draw,Max Moves,200
-908,Bot1_Black,Checkmate,76
-909,Draw,Max Moves,200
-910,Draw,Max Moves,200
-911,Draw,Max Moves,200
-912,Draw,Max Moves,200
-913,Draw,Max Moves,200
-914,Draw,Repetition,95
-915,Draw,Max Moves,200
-916,Draw,Max Moves,200
-917,Draw,Repetition,175
-918,Draw,Max Moves,200
-919,Draw,Max Moves,200
-920,Draw,Max Moves,200
-921,Draw,Max Moves,200
-922,Draw,Max Moves,200
-923,Draw,Max Moves,200
-924,Draw,Max Moves,200
-925,Draw,Max Moves,200
-926,Draw,Max Moves,200
-927,Draw,Max Moves,200
-928,Draw,Max Moves,200
-929,Draw,Repetition,141
-930,Draw,Max Moves,200
+894,Bot1_Black,Checkmate,136
+895,Bot2_Black,Checkmate,98
+896,Bot1_Black,Checkmate,104
+897,Bot2_Black,Checkmate,76
+898,Bot1_Black,Checkmate,150
+899,Bot2_Black,Checkmate,110
+900,Bot2_White,Checkmate,53
+901,Bot2_Black,Checkmate,166
+902,Bot1_Black,Checkmate,62
+903,Bot2_Black,Checkmate,94
+904,Bot2_White,Checkmate,153
+905,Bot2_Black,Checkmate,134
+906,Bot1_Black,Checkmate,92
+907,Bot2_Black,Checkmate,80
+908,Bot1_Black,Checkmate,78
+909,Bot1_White,Checkmate,87
+910,Bot1_Black,Checkmate,94
+911,Bot2_Black,Checkmate,174
+912,Bot1_Black,Checkmate,138
+913,Draw,Repetition,83
+914,Bot1_Black,Checkmate,92
+915,Bot2_Black,Checkmate,66
+916,Bot1_Black,Checkmate,142
+917,Bot1_White,Checkmate,83
+918,Draw,Repetition,106
+919,Bot2_Black,Checkmate,96
+920,Bot1_Black,Checkmate,44
+921,Bot2_Black,Checkmate,82
+922,Bot1_Black,Checkmate,78
+923,Draw,Repetition,65
+924,Bot1_Black,Checkmate,80
+925,Bot2_Black,Checkmate,172
+926,Bot1_Black,Checkmate,90
+927,Bot1_White,Checkmate,97
+928,Bot2_White,Checkmate,131
+929,Bot1_White,Checkmate,59
+930,Bot2_White,Checkmate,59
 931,Draw,Max Moves,200
-932,Draw,Max Moves,200
-933,Draw,Max Moves,200
-934,Draw,Max Moves,200
-935,Draw,Max Moves,200
-936,Draw,Stalemate,119
-937,Draw,Max Moves,200
-938,Draw,Max Moves,200
-939,Draw,Max Moves,200
-940,Draw,Max Moves,200
-941,Draw,Max Moves,200
-942,Draw,Max Moves,200
-943,Draw,Max Moves,200
-944,Bot1_Black,Checkmate,54
-945,Draw,Repetition,131
+932,Bot1_Black,Checkmate,124
+933,Bot2_Black,Checkmate,76
+934,Bot1_Black,Checkmate,90
+935,Bot2_Black,Checkmate,200
+936,Bot1_Black,Checkmate,80
+937,Bot1_White,Checkmate,95
+938,Bot1_Black,Checkmate,62
+939,Bot2_Black,Checkmate,122
+940,Bot1_Black,Checkmate,82
+941,Bot1_White,Checkmate,193
+942,Bot1_Black,Checkmate,74
+943,Bot2_Black,Checkmate,64
+944,Bot1_Black,Checkmate,94
+945,Bot2_Black,Checkmate,112
 946,Draw,Max Moves,200
-947,Draw,Max Moves,200
-948,Draw,Max Moves,200
-949,Draw,Max Moves,200
-950,Draw,Max Moves,200
-951,Draw,Max Moves,200
+947,Bot1_White,Checkmate,167
+948,Bot1_Black,Checkmate,130
+949,Bot2_Black,Checkmate,104
+950,Bot1_Black,Checkmate,180
+951,Bot2_Black,Checkmate,110
 952,Draw,Max Moves,200
-953,Draw,Max Moves,200
-954,Draw,Max Moves,200
-955,Draw,Max Moves,200
-956,Draw,Max Moves,200
+953,Bot2_Black,Checkmate,102
+954,Bot1_Black,Checkmate,70
+955,Bot2_Black,Checkmate,78
+956,Bot1_Black,Checkmate,76
 957,Draw,Max Moves,200
-958,Draw,Max Moves,200
-959,Draw,Max Moves,200
-960,Draw,Max Moves,200
+958,Bot1_Black,Checkmate,80
+959,Bot2_Black,Checkmate,100
+960,Bot2_White,Checkmate,69
 961,Draw,Max Moves,200
-962,Draw,Max Moves,200
-963,Draw,Max Moves,200
-964,Draw,Max Moves,200
-965,Draw,Max Moves,200
-966,Draw,Max Moves,200
-967,Draw,Max Moves,200
-968,Draw,Max Moves,200
-969,Draw,Max Moves,200
-970,Draw,Max Moves,200
-971,Draw,Max Moves,200
-972,Draw,Max Moves,200
-973,Draw,Max Moves,200
-974,Draw,Max Moves,200
-975,Draw,Max Moves,200
-976,Draw,Max Moves,200
+962,Bot1_Black,Checkmate,148
+963,Draw,Repetition,164
+964,Bot2_White,Checkmate,137
+965,Bot1_White,Checkmate,131
+966,Bot2_White,Checkmate,75
+967,Bot2_Black,Checkmate,120
+968,Bot2_White,Checkmate,135
+969,Bot2_Black,Checkmate,118
+970,Bot1_Black,Checkmate,106
+971,Bot1_White,Checkmate,87
+972,Bot1_Black,Checkmate,82
+973,Bot2_Black,Checkmate,140
+974,Bot2_White,Checkmate,83
+975,Bot1_White,Checkmate,127
+976,Bot1_Black,Checkmate,122
 977,Draw,Max Moves,200
-978,Draw,Max Moves,200
-979,Draw,Max Moves,200
-980,Draw,Repetition,133
-981,Draw,Max Moves,200
-982,Draw,Max Moves,200
-983,Draw,Max Moves,200
-984,Draw,Max Moves,200
-985,Draw,Max Moves,200
-986,Draw,Max Moves,200
-987,Draw,Max Moves,200
-988,Draw,Max Moves,200
-989,Draw,Max Moves,200
-990,Draw,Max Moves,200
-991,Draw,Max Moves,200
-992,Draw,Max Moves,200
+978,Bot1_Black,Checkmate,70
+979,Bot2_Black,Checkmate,120
+980,Bot1_Black,Checkmate,106
+981,Bot1_White,Checkmate,121
+982,Bot2_White,Checkmate,127
+983,Bot1_White,Checkmate,113
+984,Bot1_Black,Checkmate,100
+985,Bot1_White,Checkmate,189
+986,Bot1_Black,Checkmate,48
+987,Bot2_Black,Checkmate,172
+988,Bot1_Black,Checkmate,60
+989,Bot2_Black,Checkmate,102
+990,Bot1_Black,Checkmate,94
+991,Bot2_Black,Checkmate,90
+992,Bot1_Black,Checkmate,80
 993,Draw,Max Moves,200
-994,Draw,Repetition,174
-995,Draw,Max Moves,200
-996,Draw,Max Moves,200
-997,Draw,Max Moves,200
+994,Bot2_White,Checkmate,91
+995,Bot1_White,Checkmate,77
+996,Bot2_White,Checkmate,73
+997,Bot2_Black,Checkmate,92
 998,Draw,Max Moves,200
-999,Draw,Max Moves,200
-1000,Draw,Max Moves,200
+999,Bot2_Black,Checkmate,156
+1000,Bot1_Black,Checkmate,76

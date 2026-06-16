@@ -22,7 +22,7 @@ void RunSingleGame(int gameNum, std::ofstream& csvFile, bool bot1IsWhite) {
         
         // --- FIXED: Using the explicit SaveStateToBackup function ---
         GameState snapshot;
-        game.SaveStateToBackup(snapshot);
+        game.SaveState(snapshot);
         game.undoStack.push_back(snapshot); 
         
         game.MakeMove(aiMove);

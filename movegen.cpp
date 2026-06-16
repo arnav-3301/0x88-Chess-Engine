@@ -16,14 +16,8 @@ long long ChessGame::Perft(int depth) {
 
     for (const Move& m : moves) {
         // 1. TAKE SNAPSHOT
-        int tempBoard[128];
-        std::copy(std::begin(board), std::end(board), std::begin(tempBoard));
-        int tempEP = enPassantSquare;
-        bool tempWK = castleWK;
-        bool tempWQ = castleWQ;
-        bool tempBK = castleBK;
-        bool tempBQ = castleBQ;
-        int tempSide = sideToMove;
+        GameState backup;
+        SaveState(backup);
 
         // 2. MAKE MOVE
         MakeMove(m);
@@ -32,13 +26,7 @@ long long ChessGame::Perft(int depth) {
         nodes += Perft(depth - 1);
 
         // 4. RESTORE SNAPSHOT
-        std::copy(std::begin(tempBoard), std::end(tempBoard), std::begin(board));
-        enPassantSquare = tempEP;
-        castleWK = tempWK;
-        castleWQ = tempWQ;
-        castleBK = tempBK;
-        castleBQ = tempBQ;
-        sideToMove = tempSide;
+        RestoreState(backup);
     }
 
     return nodes;
@@ -52,28 +40,19 @@ void ChessGame::RunPerftTest(int depth) {
 
     // This is called a "Divide" - it prints the node count for each individual starting move
     for (const Move& m : moves) {
-        // Snapshot
-        int tempBoard[128];
-        std::copy(std::begin(board), std::end(board), std::begin(tempBoard));
-        int tempEP = enPassantSquare;
-        bool tempWK = castleWK;
-        bool tempWQ = castleWQ;
-        bool tempBK = castleBK;
-        bool tempBQ = castleBQ;
-        int tempSide = sideToMove;
+        // 1. Take Snapshot
+        GameState backup;
+        SaveState(backup);
 
+        // 2. Make Move
         MakeMove(m);
+
+        // 3. Recurse
         long long nodes = Perft(depth - 1);
         totalNodes += nodes;
 
-        // Restore
-        std::copy(std::begin(tempBoard), std::end(tempBoard), std::begin(board));
-        enPassantSquare = tempEP;
-        castleWK = tempWK;
-        castleWQ = tempWQ;
-        castleBK = tempBK;
-        castleBQ = tempBQ;
-        sideToMove = tempSide;
+        // 4. Restore Snapshot
+        RestoreState(backup);
 
         // Print the move format: fromIndex toIndex : nodeCount
         std::cout << "Move " << m.from << "-" << m.to << " : " << nodes << " nodes\n";
@@ -154,37 +133,39 @@ std::vector<Move> ChessGame::GeneratePseudoLegalMoves(int colorToGenerate) {
                         int targetPiece = board[targetSquare];
 
                         if (targetPiece == EMPTY || (targetPiece * activeColorSign) < 0) {
-                            Move m; 
-                            m.from = square; 
+                            Move m;
+                            m.from = square;
                             m.to = targetSquare;
                             m.isCapture = (targetPiece != EMPTY);
                             moveList.push_back(m);
                         }
                     }
                 }
-                if (activeColorSign == 1) { 
-                    if (square == 116) { 
+                if (activeColorSign == 1) {
+                    // white castling validation
+                    if (square == 116) {
 
-                        if (castleWK && board[117] == EMPTY && board[118] == EMPTY) {
+                        if (castleFlags.WK && board[117] == EMPTY && board[118] == EMPTY) {
                             Move m; m.from = 116; m.to = 118; m.isCastling = true; m.isCapture = false;
                             moveList.push_back(m);
                         }
 
-                        if (castleWQ && board[115] == EMPTY && board[114] == EMPTY && board[113] == EMPTY) {
+                        if (castleFlags.WQ && board[115] == EMPTY && board[114] == EMPTY && board[113] == EMPTY) {
                             Move m; m.from = 116; m.to = 114; m.isCastling = true; m.isCapture = false;
                             moveList.push_back(m);
                         }
                     }
                 } else {
-                    if (square == 4) { 
+                    // black castling validation
+                    if (square == 4) {
 
-                        if (castleBK && board[5] == EMPTY && board[6] == EMPTY) {
+                        if (castleFlags.BK && board[5] == EMPTY && board[6] == EMPTY) {
                             Move m; m.from = 4; m.to = 6; m.isCastling = true; m.isCapture = false;
                             moveList.push_back(m);
                         }
 
-                        if (castleBQ && board[3] == EMPTY && board[2] == EMPTY && board[1] == EMPTY) {
-                            Move m; m.from = 116; m.to = 114; m.isCastling = true; m.isCapture = false;
+                        if (castleFlags.BQ && board[3] == EMPTY && board[2] == EMPTY && board[1] == EMPTY) {
+                            Move m; m.from = 4; m.to = 2; m.isCastling = true; m.isCapture = false;
                             moveList.push_back(m);
                         }
                     }
@@ -192,8 +173,8 @@ std::vector<Move> ChessGame::GeneratePseudoLegalMoves(int colorToGenerate) {
             }
 
             else if (pieceType == P) {
-                int forwardOffset = -16 * activeColorSign; 
-                int startRank = (activeColorSign == 1) ? 6 : 1; 
+                int forwardOffset = -16 * activeColorSign;
+                int startRank = (activeColorSign == 1) ? 6 : 1;
 
                 auto AddPawnMove = [&](Move m) {
                     int targetRank = m.to >> 4;
@@ -264,7 +245,7 @@ std::vector<Move> ChessGame::GenerateLegalMoves(int colorToGenerate) {
 
         if (m.isCastling) {
             // Rule 1: Cannot castle out of check
-            if (isSquareAttacked(m.from, -activeColorSign)) continue; 
+            if (isSquareAttacked(m.from, -activeColorSign)) continue;
             // Rule 2: Cannot castle through check
             // The transit square is exactly halfway between 'from' and 'to'
             int transitSquare = (m.from + m.to) / 2;
@@ -283,12 +264,16 @@ std::vector<Move> ChessGame::GenerateLegalMoves(int colorToGenerate) {
             board[epCapturedPawnSquare] = EMPTY;
         }
 
-        int kingSquare = -1;
-        for (int i = 0; i < 128; i++) {
-            if (isSquareOnBoard(i) && board[i] == K * activeColorSign) {
-                kingSquare = i;
-                break;
-            }
+        int kingSquare = (colorToGenerate == 1) ? kingSquareWhite : kingSquareBlack;
+        // bottleneck
+        // for (int i = 0; i < 128; i++) {
+        //     if (isSquareOnBoard(i) && board[i] == K * activeColorSign) {
+        //         kingSquare = i;
+        //         break;
+        //     }
+        // }
+        if (std::abs(movingPiece) == K) {
+            kingSquare = m.to; 
         }
 
         if (kingSquare != -1 && !isSquareAttacked(kingSquare, -activeColorSign)) {

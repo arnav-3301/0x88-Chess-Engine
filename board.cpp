@@ -1,10 +1,14 @@
 #include "board.h"
 #include <algorithm>
 #include <cmath>
+#include <iterator>
 #include <raylib.h>
 #include <sstream>
 #include <cctype>
+#include <cstring>
 #include <random>
+
+// Constants
 
 const int knightOffsets[8] = {-33, -31, -18, -14, 14, 18, 31, 33};
 const int rookOffsets[4]   = {-16, 16, -1, 1};
@@ -106,17 +110,85 @@ std::string ChessGame::GetUCIMove(Move m) {
     return moveStr;
 }
 
+// FEN Parser
+void ChessGame::LoadFromFEN(const std::string& fen) {
+    // 1. Wipe the board clean
+    for (int i = 0; i < 128; i++) board[i] = EMPTY;
+
+    std::istringstream ss(fen);
+    std::string pieces, color, castling, enPassant;
+
+    // We only need the first 4 parts for our engine's logic
+    ss >> pieces >> color >> castling >> enPassant; 
+
+    // 2. Parse Piece Placement
+    int file = 0;
+    int rank = 0; // Rank 0 is the top of your screen (Black's 8th rank)
+
+    for (char c : pieces) {
+        if (c == '/') {
+            rank++;
+            file = 0;
+        } else if (isdigit(c)) {
+            file += (c - '0'); // If it's a number (e.g., '3'), skip 3 empty squares
+        } else {
+            int square = (rank << 4) + file;
+            switch (c) {
+                case 'P': board[square] = P; break;
+                case 'N': board[square] = N; break;
+                case 'B': board[square] = B; break;
+                case 'R': board[square] = R; break;
+                case 'Q': board[square] = Q; break;
+                case 'K': {
+                    board[square] = K;
+                    kingSquareWhite = square;
+                    break;
+                }
+                case 'p': board[square] = -P; break;
+                case 'n': board[square] = -N; break;
+                case 'b': board[square] = -B; break;
+                case 'r': board[square] = -R; break;
+                case 'q': board[square] = -Q; break;
+                case 'k': {
+                    board[square] = -K;
+                    kingSquareBlack = square;
+                    break;
+                }
+            }
+            file++;
+        }
+    }
+
+    // 3. Parse Active Color
+    sideToMove = (color == "w") ? 1 : -1;
+
+    // 4. Parse Castling Rights
+    castleFlags = CastleFlags(false);
+
+    for (char c : castling) {
+        if (c == 'K') castleFlags.WK = true;
+        if (c == 'Q') castleFlags.WQ = true;
+        if (c == 'k') castleFlags.BK = true;
+        if (c == 'q') castleFlags.BQ = true;
+    }
+
+    // 5. Parse En Passant Target Square
+    if (enPassant == "-") {
+        enPassantSquare = -1;
+    } else {
+        int fileIdx = enPassant[0] - 'a';
+        int rankChar = enPassant[1] - '0';
+        // Map standard chess rank (1-8) to our visual Raylib rank (7-0)
+        int rankIdx = 8 - rankChar; 
+        enPassantSquare = (rankIdx << 4) + fileIdx;
+    }
+}
+
+
 // Game history methods
 void ChessGame::SaveStateTo(std::vector<GameState>& stack) {
     GameState state;
-    std::copy(std::begin(board), std::end(board), std::begin(state.board));
-    state.sideToMove = sideToMove;
-    state.enPassantSquare = enPassantSquare;
-    state.castleWK = castleWK;
-    state.castleWQ = castleWQ;
-    state.castleBK = castleBK;
-    state.castleBQ = castleBQ;
-
+    SaveState(state);
     stack.push_back(state);
 }
 void ChessGame::Undo() {
@@ -133,13 +205,7 @@ void ChessGame::Undo() {
     undoStack.pop_back();
 
     // 3. Restore the board
-    std::copy(std::begin(prevState.board), std::end(prevState.board), std::begin(board));
-    sideToMove = prevState.sideToMove;
-    enPassantSquare = prevState.enPassantSquare;
-    castleWK = prevState.castleWK;
-    castleWQ = prevState.castleWQ;
-    castleBK = prevState.castleBK;
-    castleBQ = prevState.castleBQ;
+    RestoreState(prevState);
 
     // 4. Reset UI and locks
     selectedSquare = -1;
@@ -163,13 +229,7 @@ void ChessGame::Redo() {
     redoStack.pop_back();
 
     // 3. Restore the board
-    std::copy(std::begin(nextState.board), std::end(nextState.board), std::begin(board));
-    sideToMove = nextState.sideToMove;
-    enPassantSquare = nextState.enPassantSquare;
-    castleWK = nextState.castleWK;
-    castleWQ = nextState.castleWQ;
-    castleBK = nextState.castleBK;
-    castleBQ = nextState.castleBQ;
+    RestoreState(nextState);
 
     // 4. Reset UI and evaluate game over conditions for the restored turn
     selectedSquare = -1;
@@ -177,89 +237,24 @@ void ChessGame::Redo() {
     CheckForGameOver(); 
 }
 
-void ChessGame::SaveStateToBackup(GameState& backup) {
+void ChessGame::SaveState(GameState& backup) {
     std::copy(std::begin(board), std::end(board), std::begin(backup.board));
     backup.sideToMove = sideToMove;
     backup.enPassantSquare = enPassantSquare;
-    backup.castleWK = castleWK; 
-    backup.castleWQ = castleWQ;
-    backup.castleBK = castleBK; 
-    backup.castleBQ = castleBQ;
+    backup.castleFlags = castleFlags;
+
+    backup.kingSquareWhite = kingSquareWhite;
+    backup.kingSquareBlack = kingSquareBlack;
 }
 
-void ChessGame::RestoreStateFromBackup(const GameState& backup) {
+void ChessGame::RestoreState(const GameState& backup) {
     std::copy(std::begin(backup.board), std::end(backup.board), std::begin(board));
     sideToMove = backup.sideToMove;
     enPassantSquare = backup.enPassantSquare;
-    castleWK = backup.castleWK; 
-    castleWQ = backup.castleWQ;
-    castleBK = backup.castleBK; 
-    castleBQ = backup.castleBQ;
-}
+    castleFlags = backup.castleFlags;
 
-// FEN Parser
-void ChessGame::LoadFromFEN(const std::string& fen) {
-    // 1. Wipe the board clean
-    for (int i = 0; i < 128; i++) board[i] = EMPTY;
-
-    std::istringstream ss(fen);
-    std::string pieces, color, castling, enPassant;
-    
-    // We only need the first 4 parts for our engine's logic
-    ss >> pieces >> color >> castling >> enPassant; 
-
-    // 2. Parse Piece Placement
-    int file = 0;
-    int rank = 0; // Rank 0 is the top of your screen (Black's 8th rank)
-
-    for (char c : pieces) {
-        if (c == '/') {
-            rank++;
-            file = 0;
-        } else if (isdigit(c)) {
-            file += (c - '0'); // If it's a number (e.g., '3'), skip 3 empty squares
-        } else {
-            int square = (rank << 4) + file;
-            switch (c) {
-                case 'P': board[square] = P; break;
-                case 'N': board[square] = N; break;
-                case 'B': board[square] = B; break;
-                case 'R': board[square] = R; break;
-                case 'Q': board[square] = Q; break;
-                case 'K': board[square] = K; break;
-                case 'p': board[square] = -P; break;
-                case 'n': board[square] = -N; break;
-                case 'b': board[square] = -B; break;
-                case 'r': board[square] = -R; break;
-                case 'q': board[square] = -Q; break;
-                case 'k': board[square] = -K; break;
-            }
-            file++;
-        }
-    }
-
-    // 3. Parse Active Color
-    sideToMove = (color == "w") ? 1 : -1;
-
-    // 4. Parse Castling Rights
-    castleWK = false; castleWQ = false; castleBK = false; castleBQ = false;
-    for (char c : castling) {
-        if (c == 'K') castleWK = true;
-        if (c == 'Q') castleWQ = true;
-        if (c == 'k') castleBK = true;
-        if (c == 'q') castleBQ = true;
-    }
-
-    // 5. Parse En Passant Target Square
-    if (enPassant == "-") {
-        enPassantSquare = -1;
-    } else {
-        int fileIdx = enPassant[0] - 'a';
-        int rankChar = enPassant[1] - '0';
-        // Map standard chess rank (1-8) to our visual Raylib rank (7-0)
-        int rankIdx = 8 - rankChar; 
-        enPassantSquare = (rankIdx << 4) + fileIdx;
-    }
+    kingSquareWhite = backup.kingSquareWhite;
+    kingSquareBlack = backup.kingSquareBlack;
 }
 
 ChessGame::ChessGame(bool headless) {
@@ -269,10 +264,6 @@ ChessGame::ChessGame(bool headless) {
     selectedSquare = -1;
     enPassantSquare = -1;
     sideToMove = 1;
-    castleWK = true;
-    castleWQ = true;
-    castleBK = true;
-    castleBQ = true;
 
     isPromoting = false;
     isCheckmate = false;
@@ -365,19 +356,18 @@ void ChessGame::InitStartingPosition() {
     board[0] = -R; board[1] = -N; board[2] = -B; board[3] = -Q;
     board[4] = -K; board[5] = -B; board[6] = -N; board[7] = -R;
     for (int i = 16; i < 24; i++) board[i] = -P;
+    kingSquareBlack = 4;
 
     // 3. Set up White Pieces (Bottom of screen, indices 112-119 and 96-103)
     board[112] = R; board[113] = N; board[114] = B; board[115] = Q;
     board[116] = K; board[117] = B; board[118] = N; board[119] = R;
     for (int i = 96; i < 104; i++) board[i] = P;
+    kingSquareWhite = 116;
 
     // 4. Reset Game State
     sideToMove = 1;
     enPassantSquare = -1;
-    castleWK = true; 
-    castleWQ = true;
-    castleBK = true; 
-    castleBQ = true;
+    castleFlags = CastleFlags(true);
 }
 void ChessGame::LoadPieceTextures() {
     whiteTextures[P] = LoadTexture("resources/white-pawn.png");
@@ -585,21 +575,36 @@ void ChessGame::MakeMove(Move m) {
         enPassantSquare = (m.from + m.to) / 2;
     }
     // Revoking castling rights
-    if (piece == K)  { castleWK = false; castleWQ = false; }
-    if (piece == -K) { castleBK = false; castleBQ = false; }
+    if (piece == K)  {
+        castleFlags.WK = false;
+        castleFlags.WQ = false;
+        // here
+        kingSquareWhite = m.to;
+    }
+    if (piece == -K) {
+        castleFlags.BK = false;
+        castleFlags.BQ = false;
+        // here
+        kingSquareBlack = m.to;
+    }
 
+    // black king rights
+    if (m.from == 0   || m.to == 0)   castleFlags.BQ = false;
+    if (m.from == 7   || m.to == 7)   castleFlags.BK = false;
 
-    if (m.from == 0   || m.to == 0)   castleWQ = false;
-    if (m.from == 7   || m.to == 7)   castleWK = false;
-    if (m.from == 112 || m.to == 112) castleBQ = false;
-    if (m.from == 119 || m.to == 119) castleBK = false;
+    // white king rights
+    if (m.from == 112 || m.to == 112) castleFlags.WQ = false;
+    if (m.from == 119 || m.to == 119) castleFlags.WK = false;
 
     if (m.isCastling) {
+        // black king castling
         if (m.to == 6) {
             board[5] = board[7]; board[7] = EMPTY;
         } else if (m.to == 2) {
             board[3] = board[0]; board[0] = EMPTY;
-        } else if (m.to == 118) {
+        }
+        // white king castling
+        else if (m.to == 118) {
             board[117] = board[119]; board[119] = EMPTY;
         } else if (m.to == 114) {
             board[115] = board[112]; board[112] = EMPTY;
@@ -674,16 +679,18 @@ void ChessGame::CheckForGameOver() {
     std::vector<Move> currentMoves = GenerateLegalMoves(sideToMove);
 
     if (!currentMoves.empty()) return;
-
-    int kingSquare = -1;
-    int kingPiece = (sideToMove == 1) ? K : -K;
-
-    for (int i = 0; i < 128; i++) {
-        if (isSquareOnBoard(i) && board[i] == kingPiece) {
-            kingSquare = i;
-            break;
-        }
-    }
+    
+    // here
+    int kingSquare = (sideToMove == 1) ? kingSquareWhite : kingSquareBlack;
+    // int kingPiece = (sideToMove == 1) ? K : -K;
+    
+    // Bottleneck
+    // for (int i = 0; i < 128; i++) {
+    //     if (isSquareOnBoard(i) && board[i] == kingPiece) {
+    //         kingSquare = i;
+    //         break;
+    //     }
+    // }
 
     if (isSquareAttacked(kingSquare, -sideToMove)) {
         isCheckmate = true;
@@ -867,33 +874,33 @@ int ChessGame::Evaluate() {
 
 // helper functions
 
-int ChessGame::FindKingWhite(){
-    for(int rank = 0; rank < 8; rank++){
-        for(int file = 0; file < 8; file++){
-            int index = (rank << 4) + file;
-            if(isSquareOnBoard(index)){
-                if(board[index] == K){
-                    return index;
-                }
-            }
-        }
-    }
-    return 0;
-}
-
-int ChessGame::FindKingBlack(){
-    for(int rank = 0; rank < 8; rank++){
-        for(int file = 0; file < 8; file++){
-            int index = (rank << 4) + file;
-            if(isSquareOnBoard(index)){
-                if(board[index] == -K){
-                    return index;
-                }
-            }
-        }
-    }
-    return 0;
-}
+// int ChessGame::FindKingWhite(){
+//     for(int rank = 0; rank < 8; rank++){
+//         for(int file = 0; file < 8; file++){
+//             int index = (rank << 4) + file;
+//             if(isSquareOnBoard(index)){
+//                 if(board[index] == K){
+//                     return index;
+//                 }
+//             }
+//         }
+//     }
+//     return 0;
+// }
+//
+// int ChessGame::FindKingBlack(){
+//     for(int rank = 0; rank < 8; rank++){
+//         for(int file = 0; file < 8; file++){
+//             int index = (rank << 4) + file;
+//             if(isSquareOnBoard(index)){
+//                 if(board[index] == -K){
+//                     return index;
+//                 }
+//             }
+//         }
+//     }
+//     return 0;
+// }
 
 
 
@@ -906,8 +913,8 @@ int ChessGame::Minimax(int depth, int alpha, int beta, bool isMaximizingPlayer) 
     std::vector<Move> legalMoves = GenerateLegalMoves(sideToMove);
 
     if (legalMoves.empty()) {
-        int kingIndex = (sideToMove == 1) ? FindKingWhite() : FindKingBlack();
-        if (isSquareAttacked(kingIndex, !sideToMove)) {
+        int kingIndex = (sideToMove == 1) ? kingSquareWhite : kingSquareBlack;
+        if (isSquareAttacked(kingIndex, -sideToMove)) {
             // Checkmate: Prefer shorter mates by adding 'depth' to the score
             return isMaximizingPlayer ? -99999 - depth : 99999 + depth; 
         }
@@ -917,13 +924,13 @@ int ChessGame::Minimax(int depth, int alpha, int beta, bool isMaximizingPlayer) 
     if (isMaximizingPlayer) {
         int maxScore = -1000000;
         for (Move m : legalMoves) {
-            GameState backup; 
-            SaveStateToBackup(backup); // Using a pseudo-function here for brevity of your snapshot logic
+            GameState backup;
+            SaveState(backup); // Using a pseudo-function here for brevity of your snapshot logic
 
             MakeMove(m);
             int score = Minimax(depth - 1, alpha, beta, false);
 
-            RestoreStateFromBackup(backup); 
+            RestoreState(backup);
 
             maxScore = std::max(maxScore, score);
 
@@ -935,12 +942,12 @@ int ChessGame::Minimax(int depth, int alpha, int beta, bool isMaximizingPlayer) 
         int minScore = 1000000;
         for (Move m : legalMoves) {
             GameState backup; 
-            SaveStateToBackup(backup);
+            SaveState(backup);
 
             MakeMove(m);
             int score = Minimax(depth - 1, alpha, beta, true);
 
-            RestoreStateFromBackup(backup);
+            RestoreState(backup);
 
             minScore = std::min(minScore, score);
 
@@ -957,23 +964,23 @@ Move ChessGame::FindBestMove(int depth) {
     static std::random_device rd;
     static std::mt19937 g(rd());
     std::shuffle(legalMoves.begin(), legalMoves.end(), g);
-    
+
     Move bestMove = legalMoves[0];
     bool isWhite = (sideToMove == 1);
-    
+
     int bestScore = isWhite ? -1000000 : 1000000;
-    
+
     // Initial bounds
     int alpha = -1000000;
     int beta = 1000000;
 
     for (Move m : legalMoves) {
-        GameState backup; SaveStateToBackup(backup); 
+        GameState backup; SaveState(backup); 
 
         MakeMove(m);
         // Pass alpha and beta into the search
         int score = Minimax(depth - 1, alpha, beta, !isWhite); 
-        RestoreStateFromBackup(backup);
+        RestoreState(backup);
 
         if (isWhite) {
             if (score > bestScore) {
@@ -1005,7 +1012,7 @@ void ChessGame::AutoPlayUpdate() {
     redoStack.clear();
     moveHistory.push_back(GetUCIMove(aiMove));
     redoMoveHistory.clear();
-    
+
     // Execute
     MakeMove(aiMove);
     CheckForGameOver();
@@ -1014,15 +1021,17 @@ void ChessGame::AutoPlayUpdate() {
 bool ChessGame::IsRepetition() {
     // We only need to check the real game history
     for (const GameState& pastState : undoStack) {
-        bool identical = true;
 
-        // Check all 128 squares
-        for (int i = 0; i < 128; i++) {
-            if (pastState.board[i] != board[i]) {
-                identical = false;
-                break;
-            }
-        }
+        // bool identical = true;
+        // TODO: Implement Zobrist Hashing later
+        // bottleneck
+        // for (int i = 0; i < 128; i++) {
+        //     if (pastState.board[i] != board[i]) {
+        //         identical = false;
+        //         break;
+        //     }
+        // }
+        bool identical = (std::memcmp(pastState.board, board, 128 * sizeof(int)) == 0);
 
         // If we found a perfect match in history, it's a draw!
         if (identical) return true;
