@@ -29,7 +29,7 @@ The project uses a structured `Makefile` that compiles completely separate binar
 
 | Target | Description | Headless / Visual |
 |---|---|---|
-| `make chess_game` | Human vs. Engine playable graphical interface. | Visual (Raylib) |
+| `make chess_game` | Human vs. Human playable graphical interface. | Visual (Raylib) |
 | `make bot_arena` | Watch two Bots of different depths fight automatically. | Visual (Raylib) |
 | `make engine_trmt` | 100-game headless tournament across varied opening FENs. | Headless |
 | `make perft` | Brute-force node counting to mathematically prove move logic. | Headless |
